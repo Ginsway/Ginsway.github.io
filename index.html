@@ -19,8 +19,18 @@
             margin: 2.25px;
         }
 
-        #bording {
+        .banner {
             margin: 25px;
+            width: 100%;
+        }
+
+        #welcome {
+            height: 300px;
+        }
+
+        .banner td {
+            border: 2px solid gray;
+            border-radius: 15px;
         }
     </style>
 </head>
@@ -35,7 +45,7 @@
         crossorigin="anonymous"></script> -->
     <script src="js\bootstrap.bundle.min.js"></script>
     <!-- 導航欄 -->
-    <div>
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">Ginsway</a>
@@ -47,49 +57,64 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="visually-hidden">(current)</span></a>
+                            <a class="nav-link" href="#info">個人信息</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">模組區域</a>
                         </li>
                     </ul>
                 </div>
+                <div class="nav-item">
+                    <a class="btn btn-outline-secondary"
+                        href="https://github.com/Ginsway/Ginsway.github.io">查看Github倉庫頁面</a>
+                </div>
             </div>
         </nav>
-
     </div>
     <!-- 主要部分 -->
     <div class="container">
-        <!-- <img src="" class="img-fluid rounded-top" alt="icon"> -->
-        <div id='bording' class="card">
-            <div class="card-body">
-                <h2 class="card-title">這裡是Ginsway的個人網站</h2>
-            </div>
-        </div>
-        <div id="link">
-            <h4>我的個人主頁鏈接</h4>
-            <ul>
-                <li>MCMOD（MC百科）（
-                    <div class="btn-group" role="group">
-                        <a class="btn btn-light btn-sm" href="https://center.mcmod.cn/343440/" role="button">用戶頁</a>
-                        <a class="btn btn-light btn-sm" href="https://www.mcmod.cn/author/26946/" role="button">作者頁</a>
-                        ）
-                    </div>
-                </li>
-                <li><a class="btn btn-light btn-sm" href="https://modrinth.com/user/ZhenNing-MOD"
-                        role="button">Modrinth</a>
-                </li>
-                <li><a class="btn btn-light btn-sm" href="https://github.com/Ginsway" role="button">Github</a>
-                </li>
-                <li><a class="btn btn-light btn-sm" href="https://gitee.com/ginsway" role="button">Gitee（碼云）</a>
-                </li>
-                <li><a class="btn btn-light btn-sm" href="https://space.bilibili.com/1216008014"
-                        role="button">Bilibili（嗶哩嗶哩）</a></li>
-                <li><a class="btn btn-light btn-sm" href="https://www.mcbbs.net/?4900434"
-                        role="button">MCBBS（我的世界中文論壇）</a>
-                </li>
-            </ul>
-            </ul>
+        <div class="container-fluid">
+            <table class="banner">
+                <!-- 橫幅 -->
+                <tr>
+                    <td id="welcome" class="text-center align-middle" colspan="3">
+                        <h2>歡迎來到Ginsway的個人網站</h2>
+                    </td>
+                </tr>
+                <!-- 個人信息展示 -->
+                <tr id="info">
+                    <td style="width: 100px;height: 100px;border-right-style: none;"><img class="rounded img-thumbnail"
+                            src="img\GIN1.png" alt="頭像" height="100px" width="100px"></td>
+                    <td style="border-left-style: none;padding-left: 10px;" class="h5">Ginsway</td>
+                    <td rowspan="2" style="width: 40%;">
+                        <div class="list-group">
+                            <div class="list-group-item dropdown">
+                                <p class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                    aria-expanded="false" style="margin-bottom: 0px;">
+                                    MCMOD（MC百科）
+                                </p>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="https://center.mcmod.cn/343440">用戶頁</a></li>
+                                    <li><a class="dropdown-item" href="https://www.mcmod.cn/author/26946">作者頁</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="list-group-item" href="https://modrinth.com/user/ZhenNing-MOD">Modrinth</a>
+                            <a class="list-group-item" href="https://github.com/Ginsway" role="button">Github</a>
+                            <a class="list-group-item" href="https://gitee.com/ginsway" role="button">Gitee（碼云）</a>
+                            <a class="list-group-item" href="https://space.bilibili.com/1216008014"
+                                role="button">Bilibili（嗶哩嗶哩）</a>
+                            <a class="list-group-item" href="https://www.mcbbs.net/?4900434"
+                                role="button">MCBBS（我的世界中文論壇）</a>
+                            </li>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
     </div>
     <!-- 尾部 -->
