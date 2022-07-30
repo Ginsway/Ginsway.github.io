@@ -1,0 +1,48 @@
+#link {
+    padding: 10px;
+}
+
+.banner {
+    margin: 25px;
+    width: 100%;
+}
+
+#welcome {
+    height: 300px;
+}
+
+.banner td {
+    border: 2px solid gray;
+    border-radius: 15px;
+}
+
+div#mcmod:hover,
+#mcmod a:hover {
+    color: white;
+    background-color: #86C155;
+}
+
+a#modrinth:hover {
+    color: white;
+    background-color: #1BD96A;
+}
+
+a#github:hover {
+    color: white;
+    background-color: #161B22;
+}
+
+a#gitee:hover {
+    color: white;
+    background-color: #C71D23;
+}
+
+a#bilibili:hover {
+    color: white;
+    background-color: #00A1D6;
+}
+
+a#mcbbsbeta:hover {
+    color: white;
+    background-color: #4CAF50;
+}
