@@ -12,11 +12,7 @@
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <style>
         #link {
-            margin: 50px;
-        }
-
-        #link a {
-            margin: 2.25px;
+            padding: 10px;
         }
 
         .banner {
@@ -31,6 +27,37 @@
         .banner td {
             border: 2px solid gray;
             border-radius: 15px;
+        }
+
+        div#mcmod:hover,
+        #mcmod a:hover {
+            color: white;
+            background-color: #86C155;
+        }
+
+        a#modrinth:hover {
+            color: white;
+            background-color: #1BD96A;
+        }
+
+        a#github:hover {
+            color: white;
+            background-color: #161B22;
+        }
+
+        a#gitee:hover {
+            color: white;
+            background-color: #C71D23;
+        }
+
+        a#bilibili:hover {
+            color: white;
+            background-color: #00A1D6;
+        }
+
+        a#mcbbsbeta:hover {
+            color: white;
+            background-color: #4CAF50;
         }
     </style>
 </head>
@@ -86,26 +113,31 @@
                     <td style="width: 100px;height: 100px;border-right-style: none;"><img class="rounded img-thumbnail"
                             src="img\GIN1.png" alt="頭像" height="100px" width="100px"></td>
                     <td style="border-left-style: none;padding-left: 10px;" class="h5">Ginsway</td>
-                    <td rowspan="2" style="width: 40%;">
+                    <td rowspan="2" id="link" style="width: 40%;">
                         <div class="list-group">
-                            <div class="list-group-item dropdown">
+                            <div id="mcmod" class="list-group-item dropdown">
                                 <p class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                                     aria-expanded="false" style="margin-bottom: 0px;">
                                     MCMOD（MC百科）
                                 </p>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li><a class="dropdown-item" href="https://center.mcmod.cn/343440">用戶頁</a></li>
-                                    <li><a class="dropdown-item" href="https://www.mcmod.cn/author/26946">作者頁</a>
+                                    <li><a class="dropdown-item" href="https://center.mcmod.cn/343440"
+                                            target="_blank">用戶頁</a></li>
+                                    <li><a class="dropdown-item" href="https://www.mcmod.cn/author/26946"
+                                            target="_blank">作者頁</a>
                                     </li>
                                 </ul>
                             </div>
-                            <a class="list-group-item" href="https://modrinth.com/user/ZhenNing-MOD">Modrinth</a>
-                            <a class="list-group-item" href="https://github.com/Ginsway" role="button">Github</a>
-                            <a class="list-group-item" href="https://gitee.com/ginsway" role="button">Gitee（碼云）</a>
-                            <a class="list-group-item" href="https://space.bilibili.com/1216008014"
-                                role="button">Bilibili（嗶哩嗶哩）</a>
-                            <a class="list-group-item" href="https://www.mcbbs.net/?4900434"
-                                role="button">MCBBS（我的世界中文論壇）</a>
+                            <a id="modrinth" class="list-group-item" href="https://modrinth.com/user/ZhenNing-MOD"
+                                target="_blank">Modrinth</a>
+                            <a id="github" class="list-group-item" href="https://github.com/Ginsway"
+                                target="_blank">Github</a>
+                            <a id="gitee" class="list-group-item" href="https://gitee.com/ginsway"
+                                target="_blank">Gitee（碼云）</a>
+                            <a id="bilibili" class="list-group-item" href="https://space.bilibili.com/1216008014"
+                                target="_blank">Bilibili（嗶哩嗶哩）</a>
+                            <a id="mcbbsbeta" class="list-group-item" href="https://www.mcbbs.net/?4900434"
+                                target="_blank">MCBBS（我的世界中文論壇）</a>
                             </li>
                         </div>
                     </td>
