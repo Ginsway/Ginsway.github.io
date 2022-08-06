@@ -1,19 +1,36 @@
+.light{
+    background: white;
+}
+
+.dark{
+    background: black;
+}
+
 #link {
     padding: 10px;
 }
 
 .banner {
     margin: 25px;
+    border: 2px solid gray;
+    border-radius: 15px;
+}
+
+.banner table{
     width: 100%;
+}
+
+.info-top {
+    height: 20px;
+    border-top: 2px solid gray;
+}
+
+.info-bottom{
+    height: 20px;
 }
 
 #welcome {
     height: 300px;
-}
-
-.banner td {
-    border: 2px solid gray;
-    border-radius: 15px;
 }
 
 div#mcmod:hover,
