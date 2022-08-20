@@ -1,10 +1,90 @@
-.light{
-    background: white;
+body {
+    font-size: 14px;
+    width: 100vw;
+    height: 100vh;
 }
 
-.dark{
-    background: black;
+.dark {
+    background: #000000;
 }
+
+
+.dt3 {
+    height: 25vh;
+    margin-top: 20px;
+}
+
+.info {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 15px;
+    border-top: 2.5px solid #808080;
+}
+
+.info1 {
+    display: flex;
+    flex-flow: column nowrap;
+    border-right: 2.5px solid #808080;
+}
+
+.abme {
+    flex: 3;
+    padding: 10px 10px 0px 10px;
+}
+
+
+.info>div[class="info1"] {
+    flex: 1.5;
+}
+
+.info>div[class="list-group"] {
+    flex: 1;
+    padding-left: 10px;
+}
+
+
+.info2 {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 100%;
+}
+
+.info2 .left-info {
+    flex: 1;
+    border-right: 2.5px solid #808080;
+    padding: 10px 10px 0px 0px;
+}
+
+.icon {
+    border-bottom: 2.5px solid #808080;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.mod {
+    margin-top: 20px;
+}
+
+
+.name {
+    font-size: 20px;
+
+}
+
+.border1 {
+    border: 2.5px solid #808080;
+    border-radius: 15px;
+}
+
+.light {
+    background: #ffffff;
+}
+
 
 #link {
     padding: 10px;
@@ -12,20 +92,16 @@
 
 .banner {
     margin: 25px;
-    border: 2px solid gray;
-    border-radius: 15px;
-}
-
-.banner table{
-    width: 100%;
+    padding: 100px;
+    text-align: center;
 }
 
 .info-top {
     height: 20px;
-    border-top: 2px solid gray;
+    border-top: 2px solid #808080;
 }
 
-.info-bottom{
+.info-bottom {
     height: 20px;
 }
 
@@ -36,30 +112,30 @@
 div#mcmod:hover,
 #mcmod a:hover {
     color: white;
-    background-color: #86C155;
+    background-color: #86c155;
 }
 
 a#modrinth:hover {
     color: white;
-    background-color: #1BD96A;
+    background-color: #1bd96a;
 }
 
 a#github:hover {
     color: white;
-    background-color: #161B22;
+    background-color: #161b22;
 }
 
 a#gitee:hover {
     color: white;
-    background-color: #C71D23;
+    background-color: #c71d23;
 }
 
 a#bilibili:hover {
     color: white;
-    background-color: #00A1D6;
+    background-color: #00a1d6;
 }
 
 a#mcbbsbeta:hover {
     color: white;
-    background-color: #4CAF50;
+    background-color: #4caf50;
 }
