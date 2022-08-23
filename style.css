@@ -1,11 +1,14 @@
 body {
     font-size: 14px;
-    width: 100vw;
+    width: 99vw;
     height: 100vh;
+    padding: 0px;
+    margin: 0px;
 }
 
 .dark {
-    background: #000000;
+    background: black;
+    color: #6c757d;
 }
 
 
@@ -82,7 +85,9 @@ body {
 }
 
 .light {
-    background: #ffffff;
+    background: white;
+    color: #000000e6;
+    border-color: #000000e6;
 }
 
 
@@ -138,4 +143,17 @@ a#bilibili:hover {
 a#mcbbsbeta:hover {
     color: white;
     background-color: #4caf50;
+}
+
+#switch_theme {
+    margin-right: 20px;
+    color: black;
+}
+
+#collapsibleNavId2 {
+    justify-content: flex-end;
+}
+
+.sun {
+    color: #6c757d;
 }
