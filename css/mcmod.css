@@ -1,0 +1,46 @@
+/* 百科源代码样式 */
+/* 状态组 */
+.class-official-group {
+    margin-right: 5px;
+    display: inline-block;
+}
+.class-source {
+    height: 22px;
+    border-radius: 5px;
+    margin: 0 5px 0 0;
+    padding: 0 8px;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 22px;
+    display: inline-block;
+}
+
+.class-source {
+    border-radius: 0 5px 5px 0;
+}
+/* 开源 */
+.class-source.source-1 { 
+    background-color: #2cbe4e;
+}
+/* 更新状态 */
+.class-status {
+    height: 22px;
+    border-radius: 5px;
+    /*margin: 0 5px 0 0;*/
+    padding: 0 8px;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    line-height: 22px;
+    display: inline-block;
+}
+
+.class-status {
+    border-radius: 5px 0 0 5px;
+    border-right: 1px solid #dedede;
+}
+/* 活跃 */
+.class-status.status-1 {
+    background-color: #2cbe4e;
+}
