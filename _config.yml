@@ -40,7 +40,7 @@ external_link:
     exclude: ""
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -106,3 +106,7 @@ deploy:
     repo: https://github.com/Ginsway/Ginsway.github.io #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
     branch: main
     message:
+
+marked:
+    prependRoot: true
+    postAsset: true

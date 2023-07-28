@@ -140,3 +140,5 @@ package-lock.json
 coverage/
 .tmp*
 .vscode
+
+db.json
