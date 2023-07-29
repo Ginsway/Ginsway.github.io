@@ -2055,7 +2055,536 @@ ToolMaterial的构造方法共有五个参数：
 
 ## 2.2.2 新的食物
 
+### 概述
+
+本部分以制作一个红石苹果为例，讲述如何做出一个新的食物，并设置其食用后的效果。
+
+### 制作一个崭新的食物
+
+在包`com.github.ustc_zzzz.fmltutor.item`下新建一个文件`ItemRedstoneApple.java`，并让`ItemRedstoneApple`类继承`ItemFood`类：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemRedstoneApple.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.item;
+    
+    import net.minecraft.item.ItemFood;
+    
+    import com.github.ustc_zzzz.fmltutor.creativetab.CreativeTabsLoader;
+    
+    public class ItemRedstoneApple extends ItemFood
+    {
+        public ItemRedstoneApple()
+        {
+            super(4, 0.6F, false);
+            this.setAlwaysEdible();
+            this.setUnlocalizedName("redstoneApple");
+            this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
+        }
+    }
+```
+
+`ItemFood`类的构造方法一共有三个参数：
+
+* 第一个参数`amount`表示该食物所能回复的饥饿值，这里被设定成和苹果相同，即`4`。
+* 第二个参数`saturation`表示该食物所能添加的相对饱和度，其正比于饱和度和饥饿值的比值，这里设定为`0.6F`。
+* 最后一个参数`isWolfFood`表示该食物能否被狼食用，这里简单地设置为`false`就可以了。
+
+饱和度的计算：`2 * amount * saturation`。如面包的`amount`为5，其`saturation`为0.6F，对应的饱和度为2 *5* 0.6 = 6
+
+为了方便读者，我们在这里列了一个常见食物对应的`amount`和`saturation`表。
+
+| 食物 | amount | saturation |
+|:----|:------|:------|
+| 苹果 | 4 | 0.3F |
+| 面包 | 5 | 0.6F |
+| 生猪排 | 3 | 0.3F |
+| 熟猪排 | 8 | 0.8F |
+| 曲奇 | 2 | 0.1F |
+| 西瓜片 | 2 | 0.3F |
+| 生牛肉 | 3 | 0.3F |
+| 牛排 | 8 | 0.8F |
+| 生鸡肉 | 2 | 0.3F |
+| 熟鸡肉 | 6 | 0.6F |
+| 腐肉 | 4 | 0.1F |
+| 蜘蛛眼 | 2 | 0.8F |
+| 烤马铃薯 | 5 | 0.6F |
+| 毒马铃薯 | 2 | 0.3F |
+| 金萝卜 | 6 | 1.2F |
+| 南瓜派 | 8 | 0.3F |
+
+方法`setAlwaysEdible`表示该食物何时何地都可以被食用，即便玩家不需要回复饥饿度和饱和值。
+
+下面就是一些例行公事了（模型、贴图、语言文件、以及注册）（贴图同为金苹果调色=_=||）：
+
+**`src/main/resources/assets/fmltutor/models/item/redstone_apple.json:`**
+
+```json
+ {
+     "parent": "builtin/generated",
+     "textures": {
+         "layer0": "fmltutor:items/redstone_apple"
+     },
+     "display": {
+         "thirdperson": {
+             "rotation": [ 0, 90, -35 ],
+             "translation": [ 0, 1.25, -3.5 ],
+             "scale": [ 0.85, 0.85, 0.85 ]
+         },
+         "firstperson": {
+             "rotation": [ 0, -135, 25 ],
+             "translation": [ 0, 4, 2 ],
+             "scale": [ 1.7, 1.7, 1.7 ]
+         }
+     }
+ }
+```
+
+**`src/main/resources/assets/fmltutor/textures/items/redstone_apple.png:`**
+
+![redstone_apple](resources/redstone_apple.png)
+
+**`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
+
+```lang
+    item.redstoneApple.name=Redstone Apple
+```
+
+**`src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:`**
+
+```lang
+    item.redstoneApple.name=红石苹果
+```
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemLoader.java（部分）:`**
+
+```java
+        public static Item goldenEgg = new ItemGoldenEgg();
+        public static ItemPickaxe redstonePickaxe = new ItemRedstonePickaxe();
+        public static ItemFood redstoneApple = new ItemRedstoneApple();
+    
+        public ItemLoader(FMLPreInitializationEvent event)
+        {
+            register(goldenEgg, "golden_egg");
+            register(redstonePickaxe, "redstone_pickaxe");
+            register(redstoneApple, "redstone_apple");
+        }
+    
+        @SideOnly(Side.CLIENT)
+        public static void registerRenders()
+        {
+            registerRender(goldenEgg);
+            registerRender(redstonePickaxe);
+            registerRender(redstoneApple);
+        }
+```
+
+当然我们也可以加上合成表：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/crafting/CraftingLoader.java（部分）:`**
+
+```java
+            GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.redstoneApple), new Object[]
+            {
+                    "###", "#*#", "###", '#', Items.redstone, '*', Items.apple
+            });
+```
+
+打开游戏试试吧～
+
+### 为食物添加食用后的药水效果
+
+实际上，`ItemFood`类本身就预置了药水效果的轮子，我们在构造函数中加上这么一句：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemRedstoneApple.java（部分）:`**
+
+```java
+            this.setPotionEffect(Potion.absorption.id, 10, 1, 1.0F);
+```
+
+`setPotionEffect`方法共有四个参数：
+
+* 第一个参数表示对应药水效果的`potionId`，读者可以去`net.minecraft.potion.Potion`类中查看MC提供的二十四种药水效果，这里为伤害吸收。
+* 第二个参数表示对应药水效果的持续时间，以秒计数，这里为十秒。
+* 第三个参数表示对应药水效果的等级，很明显，0为一级，1为二级，2为三级，以此类推，这里为二级。
+* 最后一个参数表示产生该药水效果的概率，这里为100%。
+
+到这里我们就完成了对于添加食用食物后的药水效果的设置，这对大部分的食物设定来说，是够用了的。事实上，MC游戏本身的大部分食物，它们食用后的药水效果（如食用腐肉后产生的饥饿效果，食用蜘蛛眼后产生的中毒效果）都是这么设定的。
+
+### 为食物添加食用后的更多效果
+
+当然，总有例外，例如食用河豚或金苹果后产生的多种药水效果，就不能通过上面的方法完成。
+
+`ItemFood`类提供了一个方法`onFoodEaten`，我们可以把它覆写掉：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemRedstoneApple.java（部分）:`**
+
+```java
+        @Override
+        public void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
+        {
+            if (!worldIn.isRemote)
+            {
+                player.addPotionEffect(new PotionEffect(Potion.saturation.id, 200, 1));
+                player.addExperience(10);
+            }
+            super.onFoodEaten(stack, worldIn, player);
+        }
+```
+
+这段代码的意思可能已经比较明显了：除了伤害吸收二，食用该食物还会给玩家带来十秒的饱和二效果，和十点经验。这里有一点不同的地方，就是`PotionEffect`的构造函数使用的时间是以gametick计数的。
+
+打开游戏试试吧～
+
 ## 2.2.3 新的盔甲
+
+### 概述
+
+本部分以制作全套红石盔甲为例，讲述如何做出一个新的盔甲，并讲述如何制作盔甲的材质。
+
+### ArmorMaterial
+
+和ToolMaterial类似，ArmorMaterial表示的就是盔甲的材质。
+
+我们在包`com.github.ustc_zzzz.fmltutor.item`下新建一个文件`ItemRedstoneArmor.java`，并让`ItemRedstoneArmor`类继承`ItemArmor`类：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemRedstoneArmor.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.item;
+    
+    import com.github.ustc_zzzz.fmltutor.FMLTutor;
+    
+    import net.minecraft.item.ItemArmor;
+    import net.minecraftforge.common.util.EnumHelper;
+    
+    public class ItemRedstoneArmor extends ItemArmor
+    {
+        public static final ItemArmor.ArmorMaterial REDSTONE_ARMOR = EnumHelper.addArmorMaterial("REDSTONE",
+                FMLTutor.MODID + ":" + "redstone", 10, new int[]
+                { 2, 6, 4, 2 }, 10);
+    
+        public ItemRedstoneArmor(int armorType)
+        {
+            super(REDSTONE_ARMOR, REDSTONE_ARMOR.ordinal(), armorType);
+        }
+    }
+```
+
+和ToolMaterial一样，我们看看ArmorMaterial的构造方法：
+
+```java
+    private ArmorMaterial(String name, int maxDamage, int[] reductionAmounts, int enchantability) {...}
+```
+
+和原版提供的五种材料的参数：
+
+* `LEATHER("leather", 5, new int[]{1, 3, 2, 1}, 15),`
+* `CHAIN("chainmail", 15, new int[]{2, 5, 4, 1}, 12),`
+* `IRON("iron", 15, new int[]{2, 6, 5, 2}, 9),`
+* `GOLD("gold", 7, new int[]{2, 5, 3, 1}, 25),`
+* `DIAMOND("diamond", 33, new int[]{3, 8, 6, 3}, 10);`
+
+ArmorMaterial的构造方法共有四个参数：
+
+* `name`参数与该ArmorMaterial的材质所在位置有关，这一部分的稍后面会讲到。这里是“`fmltutor:redstone`”。
+* `maxDamage`参数和该ArmorMaterial对应的盔甲的耐久成正比。这里刻意降低了大小，为10。
+* `reductionAmounts`参数的四个元素表示对应盔甲的头盔、胸甲、护腿、和靴子抵御伤害的能力，如皮甲分别为1，3，2，1，和为7，钻石甲分别为3，8，6，3，和为20，**请不要让四个元素值的和超过这个值**。这里为2，6，4，2，和为14。
+* `enchantability`参数和ToolMaterial一样，和对应盔甲的附魔能力正相关，同样，金盔甲的附魔能力最高。这里为10。
+
+### 制作一套崭新的盔甲
+
+在包`com.github.ustc_zzzz.fmltutor.item`下新建一个文件`ItemRedstoneArmor.java`，并让`ItemRedstoneArmor`类继承`ItemArmor`类：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemRedstoneArmor.java（部分）:`**
+
+```java
+        public static class Helmet extends ItemRedstoneArmor
+        {
+            public Helmet()
+            {
+                super(0);
+                this.setUnlocalizedName("redstoneHelmet");
+                this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
+            }
+        }
+    
+        public static class Chestplate extends ItemRedstoneArmor
+        {
+            public Chestplate()
+            {
+                super(1);
+                this.setUnlocalizedName("redstoneChestplate");
+                this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
+            }
+        }
+    
+        public static class Leggings extends ItemRedstoneArmor
+        {
+            public Leggings()
+            {
+                super(2);
+                this.setUnlocalizedName("redstoneLeggings");
+                this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
+            }
+        }
+    
+        public static class Boots extends ItemRedstoneArmor
+        {
+            public Boots()
+            {
+                super(3);
+                this.setUnlocalizedName("redstoneBoots");
+                this.setCreativeTab(CreativeTabsLoader.tabFMLTutor);
+            }
+        }
+```
+
+`ItemArmor`的构造方法共有三个参数：
+
+* 第一个参数表示该盔甲的ArmorMaterial，自然就是我们刚刚创建的那个。
+* 第二个参数的名称为`renderIndex`，目前在源代码中没有找到对其的引用，作者个人认为其在某个版本中被弃用了，随便填一个就可以了。但是为了保证不同的ArmorMaterial对应不同的值，作者这里使用了该ArmorMaterial的序数值。
+* 第三个参数表示该盔甲的类型，0为头盔，1为胸甲，2为护腿，3为靴子。
+
+这里新建了四个子类，分别表示头盔、胸甲、护腿、和靴子。
+
+### 一些例行公事
+
+语言文件：
+
+**`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
+
+```lang
+    item.redstoneHelmet.name=Redstone Helmet
+    item.redstoneChestplate.name=Redstone Chestplate
+    item.redstoneLeggings.name=Redstone Leggings
+    item.redstoneBoots.name=Redstone Boots
+```
+
+**`src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:`**
+
+```lang
+ item.redstoneHelmet.name=红石头盔
+ item.redstoneChestplate.name=红石胸甲
+ item.redstoneLeggings.name=红石护腿
+ item.redstoneBoots.name=红石靴子
+```
+
+模型及物品材质（大家没有猜错，物品材质仍然是调色）（读者：你TM就不能搞点原创么 (￣ε(#￣)☆╰╮o(￣皿￣///) 整天调色 (￣ε(#￣)☆╰╮o(￣皿￣///) ）：
+
+**`src/main/resources/assets/fmltutor/models/item/redstone_helmet.json:`**
+
+```json
+ {
+     "parent": "builtin/generated",
+     "textures": {
+         "layer0": "fmltutor:items/redstone_helmet"
+     },
+     "display": {
+         "thirdperson": {
+             "rotation": [ 0, 90, -35 ],
+             "translation": [ 0, 1.25, -3.5 ],
+             "scale": [ 0.85, 0.85, 0.85 ]
+         },
+         "firstperson": {
+             "rotation": [ 0, -135, 25 ],
+             "translation": [ 0, 4, 2 ],
+             "scale": [ 1.7, 1.7, 1.7 ]
+         }
+     }
+ }
+```
+
+**`src/main/resources/assets/fmltutor/models/item/redstone_chestplate.json:`**
+
+```json
+ {
+     "parent": "builtin/generated",
+     "textures": {
+         "layer0": "fmltutor:items/redstone_chestplate"
+     },
+     "display": {
+         "thirdperson": {
+             "rotation": [ 0, 90, -35 ],
+             "translation": [ 0, 1.25, -3.5 ],
+             "scale": [ 0.85, 0.85, 0.85 ]
+         },
+         "firstperson": {
+             "rotation": [ 0, -135, 25 ],
+             "translation": [ 0, 4, 2 ],
+             "scale": [ 1.7, 1.7, 1.7 ]
+         }
+     }
+ }
+```
+
+**`src/main/resources/assets/fmltutor/models/item/redstone_leggings.json:`**
+
+```json
+ {
+     "parent": "builtin/generated",
+     "textures": {
+         "layer0": "fmltutor:items/redstone_leggings"
+     },
+     "display": {
+         "thirdperson": {
+             "rotation": [ 0, 90, -35 ],
+             "translation": [ 0, 1.25, -3.5 ],
+             "scale": [ 0.85, 0.85, 0.85 ]
+         },
+         "firstperson": {
+             "rotation": [ 0, -135, 25 ],
+             "translation": [ 0, 4, 2 ],
+             "scale": [ 1.7, 1.7, 1.7 ]
+         }
+     }
+ }
+```
+
+**`src/main/resources/assets/fmltutor/models/item/redstone_boots.json:`**
+
+```json
+ {
+     "parent": "builtin/generated",
+     "textures": {
+         "layer0": "fmltutor:items/redstone_boots"
+     },
+     "display": {
+         "thirdperson": {
+             "rotation": [ 0, 90, -35 ],
+             "translation": [ 0, 1.25, -3.5 ],
+             "scale": [ 0.85, 0.85, 0.85 ]
+         },
+         "firstperson": {
+             "rotation": [ 0, -135, 25 ],
+             "translation": [ 0, 4, 2 ],
+             "scale": [ 1.7, 1.7, 1.7 ]
+         }
+     }
+ }
+```
+
+**`src/main/resources/assets/fmltutor/textures/items/redstone_helmet.png:`**
+
+![redstone_helmet](resources/redstone_helmet.png)
+
+**`src/main/resources/assets/fmltutor/textures/items/redstone_chestplate.png:`**
+
+![redstone_chestplate](resources/redstone_chestplate.png)
+
+**`src/main/resources/assets/fmltutor/textures/items/redstone_leggings.png:`**
+
+![redstone_leggings](resources/redstone_leggings.png)
+
+**`src/main/resources/assets/fmltutor/textures/items/redstone_boots.png:`**
+
+![redstone_boots](resources/redstone_boots.png)
+
+注册：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemLoader.java（部分）:`**
+
+```java
+        public static ItemArmor redstoneHelmet = new ItemRedstoneArmor.Helmet();
+        public static ItemArmor redstoneChestplate = new ItemRedstoneArmor.Chestplate();
+        public static ItemArmor redstoneLeggings = new ItemRedstoneArmor.Leggings();
+        public static ItemArmor redstoneBoots = new ItemRedstoneArmor.Boots();
+    
+        public ItemLoader(FMLPreInitializationEvent event)
+        {
+            register(goldenEgg, "golden_egg");
+            register(redstonePickaxe, "redstone_pickaxe");
+            register(redstoneApple, "redstone_apple");
+    
+            register(redstoneHelmet, "redstone_helmet");
+            register(redstoneChestplate, "redstone_chestplate");
+            register(redstoneLeggings, "redstone_leggings");
+            register(redstoneBoots, "redstone_boots");
+        }
+    
+        @SideOnly(Side.CLIENT)
+        public static void registerRenders()
+        {
+            registerRender(goldenEgg);
+            registerRender(redstonePickaxe);
+            registerRender(redstoneApple);
+    
+            registerRender(redstoneHelmet);
+            registerRender(redstoneChestplate);
+            registerRender(redstoneLeggings);
+            registerRender(redstoneBoots);
+        }
+```
+
+加点合成表：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/crafting/CraftingLoader.java（部分）:`**
+
+```java
+            GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.redstoneHelmet), new Object[]
+            {
+                    "###", "# #", '#', Items.redstone
+            });
+            GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.redstoneChestplate), new Object[]
+            {
+                    "# #", "###", "###", '#', Items.redstone
+            });
+            GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.redstoneLeggings), new Object[]
+            {
+                    "###", "# #", "# #", '#', Items.redstone
+            });
+            GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.redstoneBoots), new Object[]
+            {
+                    "# #", "# #", '#', Items.redstone
+            });
+```
+
+现在打开游戏，应该就可以看到全套盔甲了。
+
+### 盔甲的材质
+
+读者可能注意到了，现在的盔甲，虽然看进来很不错，但是穿上去后就很容易发现，盔甲的外观，只是单调的两种颜色交替。这就是因为虽然我们指定了盔甲对应物品的材质，我们还没有指定盔甲本身的材质。
+
+盔甲的材质图是两个大小为64x32的图片。还记得刚刚说的ArmorMaterial的构造方法的`name`参数吗？那个就决定了这两个图片的位置。
+
+例如，钻石的`name`参数为`diamond`，其两张图片的位置就是`textures/models/armor/diamond_layer_1.png`和`textures/models/armor/diamond_layer_2.png`。
+
+这里我们的ArmorMaterial的`name`参数为`fmltutor:redstone`，其两张图片的位置就是`fmltutor:textures/models/armor/redstone_layer_1.png`和`fmltutor:textures/models/armor/redstone_layer_2.png`了。我们在那里新建文件夹，把我们想要的两张图放进去就可以了。
+
+现在打开原版的材质图，我们可以注意到一团乱糟糟的外观碎片被放到了一起。实际上，这些碎片的摆放位置都是有规律的：
+
+![armor_texture_analysis](resources/armor_texture_analysis.png)
+
+（材质分区图，其中F表示前面，B表示后面，L表示左面。R表示右面，U表示顶面，D表示底面，紫色背景表示尺寸，每格大小为7x7，边框尺寸为1）
+
+我们注意到，这一张材质图被分成了五个大部分，每一个部分都有不同的尺寸。它们分别为头（Head，8x8x8），头饰（Headwear，8x8x8），下肢（RightLeg/LeftLeg，4x12x4），身体（Body，8x12x4），和上肢（RightArm/LeftArm，4x12x4）。每一个部分分成了六个小部分，表示六个面。
+
+那。。。为什么是两张图呢？
+
+这是因为当游戏渲染不同的盔甲的时候，使用的材质图不一样。当游戏渲染护腿时使用第二张图，这里就是`redstone_layer_2.png`，渲染其他类型的盔甲时使用第一张图，这里为`redstone_layer_1.png`。
+
+游戏会根据玩家已经穿戴的盔甲，决定哪一部分被渲染：
+
+* 当玩家穿戴上头盔，游戏渲染第一张图的Head和Headwear部分。
+* 当玩家穿戴上胸甲，游戏渲染第一张图的Body和RightArm/LeftArm部分。
+* 当玩家穿戴上护腿，游戏渲染第二张图的Body和RightLeg/LeftLeg部分。
+* 当玩家穿戴上靴子，游戏渲染第一张图的RightLeg/LeftLeg部分。
+
+这里准备了一张已经划分好不同部分的，大小为64x32的图，以方便读者设计盔甲。读者可以下载然后修改：
+
+![armor_texture](resources/armor_texture.png)
+
+我们这里使用这样的两张图（没错。。。调色。。。）：
+
+**`src/main/resources/assets/fmltutor/textures/models/armor/redstone_layer_1.png:`**
+
+![redstone_layer_1](resources/redstone_layer_1.png)
+
+**`src/main/resources/assets/fmltutor/textures/models/armor/redstone_layer_2.png:`**
+
+![redstone_layer_2](resources/redstone_layer_2.png)
+
+打开游戏试试吧～
 
 ## 2.3.1 新的伤害类型
 
