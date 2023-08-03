@@ -2588,9 +2588,562 @@ ArmorMaterial的构造方法共有四个参数：
 
 ## 2.3.1 新的伤害类型
 
+### DamageSource
+
+原版提供了一个`DamageSource`类，并且预置了一些常用的`DamageSource`：
+
+* `public static DamageSource inFire;` <br> 当站在火中时产生
+* `public static DamageSource lightningBolt;` <br> 当遭雷劈时产生
+* `public static DamageSource onFire;` <br> 当着火时产生
+* `public static DamageSource lava;` <br> 当在岩浆中产生
+* `public static DamageSource inWall;` <br> 当被方块窒息时产生
+* `public static DamageSource drown;` <br> 当被水窒息时产生
+* `public static DamageSource starve;` <br> 当饥饿值为零时产生
+* `public static DamageSource cactus;` <br> 当被仙人掌刺伤时产生
+* `public static DamageSource fall;` <br> 当受到跌落伤害时产生
+* `public static DamageSource outOfWorld;` <br> 当跌落出这个世界时产生
+* `public static DamageSource generic;` <br> 当死亡原因未知时产生
+* `public static DamageSource magic;` <br> 当受到有伤害效果药水伤害时产生
+* `public static DamageSource wither;` <br> 当被凋灵效果伤害时产生
+* `public static DamageSource anvil;` <br> 当头顶铁砧时产生
+* `public static DamageSource fallingBlock;` <br> 当头顶掉落的方块时产生
+
+当希望对实体产生对应伤害时，就可以通过调用实体的`attackEntityFrom`方法，比如下面的例子：
+
+```java
+    player.attackEntityFrom(DamageSource.lightningBolt, 8.0F);
+```
+
+意思就是对装\*过度（误）的玩家产生八滴血的雷劈伤害。
+
+### 创造一个新的DamageSource
+
+我们注意到，`DamageSource`类只有一个构造方法参数：
+
+```java
+    public DamageSource(String damageTypeIn)
+```
+
+这个参数就是`DamageSource`的类型，决定着玩家死亡后会输出什么样的信息。
+
+我们打开Minecraft原版的zh_CN.lang文件：
+
+```lang
+    ...
+    death.attack.indirectMagic.item=%1$s 被 %2$s 用 %3$s 杀死了
+    death.attack.lava=%1$s 试图在岩浆里游泳
+    death.attack.lava.player=%1$s 在逃离 %2$s 时试图在岩浆里游泳
+    death.attack.lightningBolt=%1$s 被闪电击中
+    death.attack.magic=%1$s 被魔法杀死了
+    death.attack.mob=%1$s 被 %2$s 杀死了
+    death.attack.onFire=%1$s 被烧死了
+    death.attack.onFire.player=%1$s 在试图与 %2$s 战斗时被烤的酥脆
+    death.attack.outOfWorld=%1$s 掉出了这个世界
+    death.attack.player=%1$s 被 %2$s 杀死了
+    death.attack.player.item=%1$s 被 %2$s 用 %3$s 杀死了
+    death.attack.starve=%1$s 饿死了
+    death.attack.thorns=%1$s 在试图伤害 %2$s 时被杀
+    death.attack.thrown=%1$s 被 %2$s 给砸死了
+    death.attack.thrown.item=%1$s 被 %2$s 用 %3$s 给砸死了
+    death.attack.wither=%1$s 凋零了
+    ...
+```
+
+换言之，玩家死亡收到的信息，就是`death.attack.<damageTypeIn>`，或者`death.attack.<damageTypeIn>.item`。
+
+我们新建这样一个事件：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:`**
+
+```java
+        @SubscribeEvent
+        public void onEntityInteract(EntityInteractEvent event)
+        {
+            EntityPlayer player = event.entityPlayer;
+            if (player.isServerWorld() && event.target instanceof EntityPig)
+            {
+                EntityPig pig = (EntityPig) event.target;
+                ItemStack stack = player.getCurrentEquippedItem();
+                if (stack != null && (stack.getItem() == Items.wheat || stack.getItem() == Items.wheat_seeds))
+                {
+                    player.attackEntityFrom((new DamageSource("byPig")).setDifficultyScaled().setExplosion(), 8.0F);
+                    player.worldObj.createExplosion(pig, pig.posX, pig.posY, pig.posZ, 2.0F, false);
+                    pig.setDead();
+                }
+            }
+        }
+```
+
+并在语言文件中加上：
+
+**`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
+
+```lang
+ death.attack.byPig=%s was dead because of a pig!
+```
+
+**`src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:`**
+
+```lang
+ death.attack.byPig=%s被猪弄死了！
+```
+
+读者应该能够看明白，这段代码的作用就是当玩家向猪试图喂食小麦或者小麦种子的时候，因为喂错饲料而发怒（误）的那头猪会Boom，并给玩家一定的伤害。
+
+### DamageSource的属性
+
+刚刚读者可能已经注意到了，我们为这个`DamegeSource`赋予了两个属性：
+
+* `setDefficultyScaled`方法设置的属性表示受到的伤害随着难度的变化而变化。
+* `setExplosion`方法设置的属性表示该伤害由爆炸造成，爆炸保护附魔会起到作用。
+
+除此之外，还可以设置`DamageSource`的其他属性：
+
+* `setDamageBypassesArmor`设置伤害不会因为盔甲的保护而折减。
+* `setDamageAllowedInCreativeMode`设置创造模式同样会受到伤害。
+* `setDamageIsAbsolute`设置伤害是绝对的，不会受到附魔、药水效果等影响。
+* `setFireDamage`设置伤害由火焰造成，火焰保护附魔会起到作用。
+* `setMagicDamage`设置伤害是由药水造成的。
+* `setProjectile`设置伤害由弹射物造成，弹射物保护附魔会起到作用。
+
 ## 2.3.2 新的附魔属性
 
+### 概述
+
+作者在玩MC这款游戏时一直在想：要是挖铁矿出铁，挖金矿出金，那将是一件多么美妙的事。本部分将带领大家，一步一步地制作一个被用于工具的新的附魔：火焰灼烧。
+
+### Enchantment类
+
+和附魔相关的类就是`Enchantment`类，打开`Enchantment`类，我们可以看到多个已经预设过的附魔种类。
+
+我们先看看`Enchantment`类的构造方法：
+
+```java
+    protected Enchantment(int enchID, ResourceLocation enchName, int enchWeight, EnumEnchantmentType enchType)
+```
+
+我们解释一下这个构造方法的四个参数：
+
+* `enchID`指的就是这个附魔的ID，我们看到原版已经定义了很多ID，当新建的ID重复时，游戏会报错。
+* `enchName`指的就是这个附魔的名称，使用`ResourceLocation`的方式标记，比如时运就是`"minecraft:fortune"`，精准采集就是`"minecraft:silk_touch"`，这个名称和方块、物品的ID是类似的。
+* `enchWeight`指的就是这个附魔的权重，和修复附魔需要的经验等级成负相关，和通过附魔台得到该种附魔的概率成正相关。
+* `enchType`表示这种附魔是什么类型的，有武器、工具、弓等多种。
+
+我们注意到，`enchID`如果重复，游戏会报错，所以我们将这个ID写进配置，使得玩家可以修改它，以免和原版或者某些Mod重复。
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/ConfigLoader.java（部分）:`**
+
+```java
+        public static int diamondBurnTime;
+    
+        public static int enchantmentFireBurn;
+    
+        public ConfigLoader(FMLPreInitializationEvent event)
+        {
+            logger = event.getModLog();
+            config = new Configuration(event.getSuggestedConfigurationFile());
+    
+            config.load();
+            load();
+        }
+    
+        public static void load()
+        {
+            logger.info("Started loading config. ");
+            String comment;
+            
+            comment = "How many seconds can a diamond burn in a furnace. ";
+            diamondBurnTime = config.get(Configuration.CATEGORY_GENERAL, "diamondBurnTime", 640, comment).getInt();
+    
+            comment = "Fire burn enchantment id. ";
+            enchantmentFireBurn = config.get(Configuration.CATEGORY_GENERAL, "enchantmentFireBurn", 36, comment).getInt();
+    
+            config.save();
+            logger.info("Finished loading config. ");
+        }
+```
+
+然后我们新建包`com.github.ustc_zzzz.fmltutor.enchantment`，并在其中新建一个文件`EnchantmentFireBurn.java`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/enchantment/EnchantmentFireBurn.java`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.enchantment;
+    
+    import com.github.ustc_zzzz.fmltutor.FMLTutor;
+    import com.github.ustc_zzzz.fmltutor.common.ConfigLoader;
+    
+    import net.minecraft.enchantment.Enchantment;
+    import net.minecraft.enchantment.EnumEnchantmentType;
+    import net.minecraft.init.Items;
+    import net.minecraft.item.ItemStack;
+    import net.minecraft.util.ResourceLocation;
+    
+    public class EnchantmentFireBurn extends Enchantment
+    {
+        public EnchantmentFireBurn()
+        {
+            super(ConfigLoader.enchantmentFireBurn, new ResourceLocation(FMLTutor.MODID + ":" + "fire_burn"), 1,
+                    EnumEnchantmentType.DIGGER);
+            this.setName("fireBurn");
+        }
+    
+        @Override
+        public int getMinEnchantability(int enchantmentLevel)
+        {
+            return 15;
+        }
+    
+        @Override
+        public int getMaxEnchantability(int enchantmentLevel)
+        {
+            return super.getMinEnchantability(enchantmentLevel) + 50;
+        }
+    
+        @Override
+        public int getMaxLevel()
+        {
+            return 1;
+        }
+    
+        @Override
+        public boolean canApplyTogether(Enchantment ench)
+        {
+            return super.canApplyTogether(ench) && ench.effectId != silkTouch.effectId && ench.effectId != fortune.effectId;
+        }
+    
+        @Override
+        public boolean canApply(ItemStack stack)
+        {
+            return stack.getItem() == Items.shears ? true : super.canApply(stack);
+        }
+    }
+```
+
+`setName`方法的作用和方块、物品等的`setUnlocalizedName`方法类似，我们修改一下语言文件：
+
+**`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
+
+```lang
+    enchantment.fireBurn=Fire Burning
+```
+
+**`src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:`**
+
+```lang
+    enchantment.fireBurn=火焰灼烧
+```
+
+`getMinEnchantability`和`getMaxEnchantability`方法的作用就是获取可以获取到此附魔的最低等级和最高等级。这里被设置成了和精准采集相同。
+
+`getMaxLevel`方法指的就是这个附魔的最大等级了。自然，这个附魔只应该有一个等级。
+
+`canApplyTogether`方法表示的是这个附魔可否与其他附魔共存。这里设定为不能和精准采集和时运共存。
+
+`canApply`方法表示的是这个附魔可以作用的物品。既然是一个作用于工具的附魔，自然作用对象是所有工具和剪刀。
+
+然后我们在`com.github.ustc_zzzz.fmltutor.enchantment`包下新建`EnchantmentLoader.java`文件，完成对这个附魔属性的注册：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/enchantment/EnchantmentLoader.java`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.enchantment;
+    
+    import com.github.ustc_zzzz.fmltutor.common.ConfigLoader;
+    
+    import net.minecraft.enchantment.Enchantment;
+    
+    public class EnchantmentLoader
+    {
+        public static Enchantment fireBurn;
+    
+        public EnchantmentLoader()
+        {
+            try
+            {
+                fireBurn = new EnchantmentFireBurn();
+                Enchantment.addToBookList(fireBurn);
+            }
+            catch (Exception e)
+            {
+                ConfigLoader.logger().error(
+                        "Duplicate or illegal enchantment id: {}, the registry of class '{}' will be skipped. ",
+                        ConfigLoader.enchantmentFireBurn, EnchantmentFireBurn.class.getName());
+            }
+        }
+    }
+```
+
+这里对该种附魔进行注册，如果ID重复，则输出错误信息。
+
+`addToBookList`方法使得该附魔被注册，使其在附魔台上可以被注册到，在创造模式物品栏上也可以找到对应的附魔书。
+
+下面是一张拥有此种附魔的钻石镐示例：
+
+![fire_burn](resources/fire_burn.png)
+
+### 完善你的附魔
+
+为了使我们的附魔可以产生作用，我们需要在特定的地方监听事件，以使这个附魔产生作用：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:`**
+
+```java
+        @SubscribeEvent
+        public void onBlockHarvestDrops(BlockEvent.HarvestDropsEvent event)
+        {
+            if (!event.world.isRemote && event.harvester != null)
+            {
+                ItemStack itemStack = event.harvester.getHeldItem();
+                if (EnchantmentHelper.getEnchantmentLevel(EnchantmentLoader.fireBurn.effectId, itemStack) > 0
+                        && itemStack.getItem() != Items.shears)
+                {
+                    for (int i = 0; i < event.drops.size(); ++i)
+                    {
+                        ItemStack stack = event.drops.get(i);
+                        ItemStack newStack = FurnaceRecipes.instance().getSmeltingResult(stack);
+                        if (newStack != null)
+                        {
+                            newStack = newStack.copy();
+                            newStack.stackSize = stack.stackSize;
+                            event.drops.set(i, newStack);
+                        }
+                        else if (stack != null)
+                        {
+                            Block block = Block.getBlockFromItem(stack.getItem());
+                            boolean b = (block == null);
+                            if (!b && (block.isFlammable(event.world, event.pos, EnumFacing.DOWN)
+                                    || block.isFlammable(event.world, event.pos, EnumFacing.EAST)
+                                    || block.isFlammable(event.world, event.pos, EnumFacing.NORTH)
+                                    || block.isFlammable(event.world, event.pos, EnumFacing.SOUTH)
+                                    || block.isFlammable(event.world, event.pos, EnumFacing.UP)
+                                    || block.isFlammable(event.world, event.pos, EnumFacing.WEST)))
+                            {
+                                event.drops.remove(i);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+```
+
+我们监听了方块被挖掘后即将掉落物品的事件，在玩家手持存在“火焰灼烧”附魔的工具时，将其换成被灼烧过的物品掉落。
+
+最后在`CommonProxy`中注册：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/CommonProxy.java（部分）:`**
+
+```java
+        public void init(FMLInitializationEvent event)
+        {
+            new CraftingLoader();
+            new EnchantmentLoader();
+            new EventLoader();
+        }
+```
+
+打开游戏试试吧～
+
 ## 2.3.3 新的药水效果
+
+### 概述
+
+很多MOD都添加了玩家的附属效果，使用药水效果的方式展示玩家的效果有着清晰直观、方便控制的特点，本部分将以一个拥有摔落保护的药水效果为例，一步一步地带领大家实现一个崭新的药水效果。
+
+### 一个崭新的药水效果
+
+新建包`com.github.ustc_zzzz.fmltutor.potion`，在其中新建一个文件`PotionLoader.java`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/potion/PotionLoader.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.potion;
+    
+    import net.minecraft.potion.Potion;
+    import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+    
+    public class PotionLoader
+    {
+        public static Potion potionFallProtection;
+    
+        public PotionLoader(FMLPreInitializationEvent event)
+        {
+            potionFallProtection = new PotionFallProtection();
+        }
+    }
+```
+
+在包`com.github.ustc_zzzz.fmltutor.potion`下新建文件`PotionFallProtection.java`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/potion/PotionFallProtection.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.potion;
+    
+    import com.github.ustc_zzzz.fmltutor.FMLTutor;
+    
+    import net.minecraft.potion.Potion;
+    import net.minecraft.util.ResourceLocation;
+    
+    public class PotionFallProtection extends Potion
+    {
+        private static final ResourceLocation res = new ResourceLocation(FMLTutor.MODID + ":" + "textures/gui/potion.png");
+    
+        public PotionFallProtection()
+        {
+            super(new ResourceLocation(FMLTutor.MODID + ":" + "fall_protection"), false, 0x7F0000);
+            this.setPotionName("potion.fallProtection");
+            this.setIconIndex(0, 0);
+        }
+    }
+```
+
+我们讲一下`Potion`构造方法的三个参数：
+
+* 第一个参数表示这个药水效果的名称，其使用方式和附魔相同
+* 第二个参数表示这个附魔是否有害，这里很明显是无害的
+* 第三个参数表示这个附魔的粒子效果（螺旋）颜色，这里定为深红色
+
+`setIconIndex`方法表示这个药水效果在显示的时候使用的图标在下面这张图（来自`assets.minecraft.textures.gui.container.inventory.png`）中的位置，两个参数表示x和y坐标，这里设置为和速度药水效果的图标一致：
+
+![inventory_potion_analysis](resources/inventory_potion_analysis.png)
+
+`setPotionName`方法和附魔的`setName`方法，以及方块、物品等的`setUnlocalizedName`方法类似，我们修改一下语言文件：
+
+**`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
+
+```lang
+    potion.fallProtection=Fall Protection
+```
+
+**`src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:`**
+
+```lang
+    potion.fallProtection=摔落保护
+```
+
+在`preInit`阶段初始化：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/CommonProxy.java（部分）:`**
+
+```java
+        public void preInit(FMLPreInitializationEvent event)
+        {
+            new ConfigLoader(event);
+            new CreativeTabsLoader(event);
+            new ItemLoader(event);
+            new BlockLoader(event);
+            new PotionLoader(event);
+        }
+```
+
+打开游戏，输入：
+
+```
+    /effect @a fmltutor:fall_protection
+```
+
+按下E键，就可以看到药水效果啦～
+
+### 使药水效果起到作用
+
+我们在适当的时机通过调用`EntityLiving`类的`getActivePotionEffect`方法来使得药水效果真正起到作用，这里我们监视事件`LivingHurtEvent`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:`**
+
+```java
+        @SubscribeEvent
+        public void onLivingHurt(LivingHurtEvent event)
+        {
+            if (event.source.getDamageType().equals("fall"))
+            {
+                PotionEffect effect = event.entityLiving.getActivePotionEffect(PotionLoader.potionFallProtection);
+                if (effect != null)
+                {
+                    if (effect.getAmplifier() == 0)
+                    {
+                        event.ammount /= 2;
+                    }
+                    else
+                    {
+                        event.ammount = 0;
+                    }
+                }
+            }
+        }
+```
+
+这段代码的作用就是当该药水效果等级为一时，摔落效果带来的伤害减半，如果等级超过一，伤害置零。
+
+`PotionEffect`类和`Potion`类的区别就是`PotionEffect`是一个特殊化了的药水效果，该药水效果被赋予了时长和等级等。
+
+### 让药水效果拥有自己的图标
+
+刚刚我们可能注意到了，虽然我们可以指定药水效果的图标，但是这些图标都只被局限在一个图片中，所幸的是，Forge给我们提供了一个方法，让我们可以自定义药水的图标：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/potion/PotionFallProtection.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.potion;
+    
+    import com.github.ustc_zzzz.fmltutor.FMLTutor;
+    
+    import net.minecraft.client.Minecraft;
+    import net.minecraft.potion.Potion;
+    import net.minecraft.potion.PotionEffect;
+    import net.minecraft.util.ResourceLocation;
+    
+    public class PotionFallProtection extends Potion
+    {
+        private static final ResourceLocation res = new ResourceLocation(FMLTutor.MODID + ":" + "textures/gui/potion.png");
+    
+        public PotionFallProtection()
+        {
+            super(new ResourceLocation(FMLTutor.MODID + ":" + "fall_protection"), false, 0x7F0000);
+            this.setPotionName("potion.fallProtection");
+            // this.setIconIndex(0, 0);
+        }
+    
+        @Override
+        public void renderInventoryEffect(int x, int y, PotionEffect effect, Minecraft mc)
+        {
+            mc.getTextureManager().bindTexture(PotionFallProtection.res);
+            mc.currentScreen.drawTexturedModalRect(x + 6, y + 7, 0, 0, 18, 18);
+        }
+    }
+```
+
+我们这里覆写的就是`renderInventoryEffect`方法，这个方法是当该药水效果的图标绘制时调用的。
+
+除此之外，我们还要提供一个大小为256x256（其它尺寸是不可行的，只能256x256）的图片，并在左上角放上对应的18x18图标（这里终于是原创的了^_^）。
+
+**`src/main/resources/assets/fmltutor/textures/gui/potion.png:`**
+
+![gui_potion](resources/gui_potion.png)
+
+（轻点打我。。。这个想法是一个叫作Blair的同学提供的，也为了纪念本部分的章节号23333333）<br>（我相信知道Blair是谁的人一定不会阅读到这部分教程(～￣▽￣)～）
+
+现在，我们分析一下这个方法：
+
+* `x`参数表示药水效果框左上角的横坐标
+* `y`参数表示药水效果框左上角的纵坐标
+* `effect`参数表示该药水效果对应的`PotionEffect`
+* `mc`参数表示当前的这个游戏
+
+`bindTexture`方法用于绑定我们想要用于绘制的图片，这里就是上面我们提供的图片。
+
+`drawTexturedModalRect`方法就是用于绘制这个图标了，我们这里简要分析一下这个方法，该方法在后面的部分还会提到，并加以更加详细的解释：
+
+* 第一个参数和第二个参数表示绘制的图标在游戏中的左上角的横纵坐标（xy值）。这里照着原版的数据做就行了
+* 第三个参数和第四个参数表示绘制的图标在图片中的左上角的横纵坐标（uv值）。这里是整张图的左上角，自然都是零
+* 第五个参数和第六个参数表示绘制的图标大小。这里和原版一样，是18x18
+
+现在打开游戏，是不是看到自定义的药水效果图标了呢～
+
+下面是效果示例图：
+
+![fall_protection](resources/fall_protection.png)
 
 ## 2.4.1 热键绑定
 
