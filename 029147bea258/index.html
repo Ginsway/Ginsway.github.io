@@ -41,8 +41,11 @@
 <meta property="og:image" content="https://ginsway.github.io/resources/inventory_potion_analysis.png">
 <meta property="og:image" content="https://ginsway.github.io/resources/gui_potion.png">
 <meta property="og:image" content="https://ginsway.github.io/resources/fall_protection.png">
+<meta property="og:image" content="https://ginsway.github.io/resources/key_binding.png">
+<meta property="og:image" content="https://ginsway.github.io/resources/achievement_analysis.png">
+<meta property="og:image" content="https://ginsway.github.io/resources/achievement_example.png">
 <meta property="article:published_time" content="2020-11-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-04T14:32:17.401Z">
+<meta property="article:modified_time" content="2023-08-07T11:39:22.766Z">
 <meta property="article:author" content="Ginsway">
 <meta property="article:tag" content="tutorial">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          75k 字
+          83k 字
         
       </span>
     
@@ -250,7 +253,7 @@
         
         
         
-          629 分钟
+          695 分钟
         
       </span>
     
@@ -1375,7 +1378,104 @@
 <p>现在打开游戏，是不是看到自定义的药水效果图标了呢～</p>
 <p>下面是效果示例图：</p>
 <p><img src="/resources/fall_protection.png" srcset="/img/loading.gif" lazyload alt="fall_protection"></p>
-<h2 id="2-4-1-热键绑定"><a href="#2-4-1-热键绑定" class="headerlink" title="2.4.1 热键绑定"></a>2.4.1 热键绑定</h2><h2 id="2-4-2-成就系统"><a href="#2-4-2-成就系统" class="headerlink" title="2.4.2 成就系统"></a>2.4.2 成就系统</h2><h2 id="2-4-3-系统命令"><a href="#2-4-3-系统命令" class="headerlink" title="2.4.3 系统命令"></a>2.4.3 系统命令</h2><h2 id="2-4-4-声音系统"><a href="#2-4-4-声音系统" class="headerlink" title="2.4.4 声音系统"></a>2.4.4 声音系统</h2><h2 id="2-5-1-在世界生成矿物"><a href="#2-5-1-在世界生成矿物" class="headerlink" title="2.5.1 在世界生成矿物"></a>2.5.1 在世界生成矿物</h2><h2 id="2-5-2-注册和使用矿物字典"><a href="#2-5-2-注册和使用矿物字典" class="headerlink" title="2.5.2 注册和使用矿物字典"></a>2.5.2 注册和使用矿物字典</h2><h2 id="2-6-1-创建并注册一份流体"><a href="#2-6-1-创建并注册一份流体" class="headerlink" title="2.6.1 创建并注册一份流体"></a>2.6.1 创建并注册一份流体</h2><h2 id="2-6-2-为流体添加对应的桶"><a href="#2-6-2-为流体添加对应的桶" class="headerlink" title="2.6.2 为流体添加对应的桶"></a>2.6.2 为流体添加对应的桶</h2>
+<h2 id="2-4-1-热键绑定"><a href="#2-4-1-热键绑定" class="headerlink" title="2.4.1 热键绑定"></a>2.4.1 热键绑定</h2><h3 id="概述-5"><a href="#概述-5" class="headerlink" title="概述"></a>概述</h3><p>这一部分，作者将带领大家完成热键绑定的操作。在操作前，读者需要记住一点：<strong>所有和热键绑定相关的操作都只在客户端执行。</strong></p>
+<h3 id="KeyBinding"><a href="#KeyBinding" class="headerlink" title="KeyBinding"></a>KeyBinding</h3><p>我们在包<code>com.github.ustc_zzzz.fmltutor.client</code>下新建一个文件<code>KeyLoader.java</code>：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/client/KeyLoader.java:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.github.ustc_zzzz.fmltutor.client;<br><br><span class="hljs-keyword">import</span> net.minecraft.client.settings.KeyBinding;<br><span class="hljs-keyword">import</span> net.minecraftforge.fml.client.registry.ClientRegistry;<br><span class="hljs-keyword">import</span> org.lwjgl.input.Keyboard;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">KeyLoader</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> KeyBinding showTime;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">KeyLoader</span><span class="hljs-params">()</span><br>    &#123;<br>        KeyLoader.showTime = <span class="hljs-keyword">new</span> <span class="hljs-title class_">KeyBinding</span>(<span class="hljs-string">&quot;key.fmltutor.showTime&quot;</span>, Keyboard.KEY_H, <span class="hljs-string">&quot;key.categories.fmltutor&quot;</span>);<br><br>        ClientRegistry.registerKeyBinding(KeyLoader.showTime);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后我们在<code>ClientProxy</code>下注册：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/client/ClientProxy.java（部分）:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">(FMLInitializationEvent event)</span><br>&#123;<br>    <span class="hljs-built_in">super</span>.init(event);<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">KeyLoader</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>现在解释一下上面的代码。</p>
+<p>首先，我们先定义一个<code>KeyBinding</code>，我们看一看<code>KeyBinding</code>的构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">KeyBinding</span><span class="hljs-params">(String description, <span class="hljs-type">int</span> keyCode, String category)</span> &#123;...&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>description</code>参数表示这个键的介绍。</li>
+<li><code>keyCode</code>参数表示这个键的默认键名。这里是H。</li>
+<li><code>category</code>参数表示这个键所在的键类别。</li>
+</ul>
+<p>我们修改一下语言文件：</p>
+<p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lang">key.fmltutor.showTime=Show Time<br><br>key.categories.fmltutor=FML Tutor<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lang">key.fmltutor.showTime=显示时间<br><br>key.categories.fmltutor=FML教程<br></code></pre></td></tr></table></figure>
+
+<p>然后我们使用<code>ClientRegistry</code>的<code>registerKeyBinding</code>方法注册。</p>
+<p>打开游戏，进入控制设置，我们就可以看到我们注册到的<code>KeyBinding</code>了：</p>
+<p><img src="/resources/key_binding.png" srcset="/img/loading.gif" lazyload alt="key_binding"></p>
+<h3 id="使绑定的热键产生作用"><a href="#使绑定的热键产生作用" class="headerlink" title="使绑定的热键产生作用"></a>使绑定的热键产生作用</h3><p>我们在注册的事件中加入监听按键按下的事件：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SideOnly(Side.CLIENT)</span><br><span class="hljs-meta">@SubscribeEvent</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onKeyInput</span><span class="hljs-params">(InputEvent.KeyInputEvent event)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (KeyLoader.showTime.isPressed())<br>    &#123;<br>        <span class="hljs-type">EntityPlayer</span> <span class="hljs-variable">player</span> <span class="hljs-operator">=</span> Minecraft.getMinecraft().thePlayer;<br>        <span class="hljs-type">World</span> <span class="hljs-variable">world</span> <span class="hljs-operator">=</span> Minecraft.getMinecraft().theWorld;<br>        player.addChatMessage(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ChatComponentTranslation</span>(<span class="hljs-string">&quot;chat.fmltutor.time&quot;</span>, world.getTotalWorldTime()));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面这段代码的作用，就是当键被按下的时候，如果检测到刚才我们注册的<code>KeyBinding</code>使用的键被按下，就向游戏控制台输入世界当前的总时间，也就是从世界创始以来的时间。</p>
+<p><code>ChatComponentTranslation</code>这个类的作用，就是把语言文件对应的信息翻译掉，翻译的本质方式是<code>String</code>类的<code>format</code>方法，也就是说，首先Minecraft会从对应的语言文件中获取<code>ChatComponentTranslation</code>类的第一个参数对应的内容，然后调用<code>String</code>类的<code>format</code>方法，使用后面的参数替换前面的格式符，比如<code>%s</code>（字符串），<code>%d</code>（整数）等。</p>
+<p>所以我们现在更新一下语言文件：</p>
+<p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lang">chat.fmltutor.time=The total world time is: %s.<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lang">chat.fmltutor.time=现在时间为：%s。<br></code></pre></td></tr></table></figure>
+
+<p>打开游戏试试吧～</p>
+<h2 id="2-4-2-成就系统"><a href="#2-4-2-成就系统" class="headerlink" title="2.4.2 成就系统"></a>2.4.2 成就系统</h2><h3 id="概述-6"><a href="#概述-6" class="headerlink" title="概述"></a>概述</h3><p>成就系统往往在一个游戏中占有着重要的部分，通过这个成就系统，游戏可以引导玩家向游戏希望的方向发展。一个好的游戏，往往都会有着完善的、引导性强的成就系统。Minecraft这款游戏的原版成就系统虽然引导性不够强，但却是相当完善的。Forge通过成就页的方式使得每个Mod都可以产生自己的成就系统。</p>
+<p>本部分将一步一步地带领读者完成一个新成就，和一个新成就页。</p>
+<h3 id="新的成就"><a href="#新的成就" class="headerlink" title="新的成就"></a>新的成就</h3><p>本部分我们首先试图制作一个在前面部分制作的当玩家提供给猪错误的饲料产生伤害而死的成就。</p>
+<p>我们新建一个包<code>com.github.ustc_zzzz.fmltutor.achievement</code>，并在其中新建一个文件<code>AchievementLoader.java</code>：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/achievement/AchievementLoader.java:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.github.ustc_zzzz.fmltutor.achievement;<br><br><span class="hljs-keyword">import</span> com.github.ustc_zzzz.fmltutor.item.ItemLoader;<br><br><span class="hljs-keyword">import</span> net.minecraft.stats.Achievement;<br><span class="hljs-keyword">import</span> net.minecraft.stats.AchievementList;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AchievementLoader</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Achievement</span> <span class="hljs-variable">worseThanPig</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Achievement</span>(<span class="hljs-string">&quot;achievement.fmltutor.worseThanPig&quot;</span>,<br>            <span class="hljs-string">&quot;fmltutor.worseThanPig&quot;</span>, <span class="hljs-number">5</span>, -<span class="hljs-number">4</span>, ItemLoader.goldenEgg, AchievementList.buildSword);<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AchievementLoader</span><span class="hljs-params">()</span><br>    &#123;<br>        worseThanPig.setSpecial().registerStat();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Minecraft提供了一个<code>Achievement</code>类，现在我们看一个这个<code>Achievement</code>类的构造方法：</p>
+<ul>
+<li>第一个参数是这个成就的名称。</li>
+<li>第二个参数是这个成就的非本地化名称。</li>
+<li>第三个参数和第四个参数是这个成就所在成就图中的位置，分别为x和y坐标。</li>
+<li>第五个参数是这个成就在成就图上显示的图标。</li>
+<li>最后一个参数是这个成就依赖的成就，如果这个成就独立，那么设为null。</li>
+</ul>
+<p>为使得成就的非本地化名称生效，我们更改一下语言文件：</p>
+<p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lang">achievement.fmltutor.worseThanPig=Worse Than Pig<br>achievement.fmltutor.worseThanPig.desc=Die from inappropriate food for the pig<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:</code></strong></p>
+<p> achievement.fmltutor.worseThanPig&#x3D;人不如猪<br> achievement.fmltutor.worseThanPig.desc&#x3D;因为提供给猪错误的饲料而死</p>
+<p>含<code>desc</code>部分的行表示成就的显示描述，不含<code>desc</code>部分的行表示这个成就的显示名称。</p>
+<p>下面这张图是一张Minecraft原版所有成就的坐标位置图，其中x和y均为零的位置，就是打开物品栏那个成就的位置：</p>
+<p><img src="/resources/achievement_analysis.png" srcset="/img/loading.gif" lazyload alt="achievement_analysis"></p>
+<p><code>setSpecial</code>方法用于设置这个成就是一种特殊成就，在成就图上会有花边，获得成就时显示的文字也是紫色的。</p>
+<p>然后，我们通过对这个<code>Achievement</code>类的实例调用<code>registerStat</code>方法注册这个成就。</p>
+<p>最后我们在<code>CommonProxy</code>完成注册：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/CommonProxy.java（部分）:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">(FMLInitializationEvent event)</span><br>&#123;<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">CraftingLoader</span>();<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">EnchantmentLoader</span>();<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">AchievementLoader</span>();<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">EventLoader</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>打开游戏，就可以在成就图上看到对应的成就了：</p>
+<p><img src="/resources/achievement_example.png" srcset="/img/loading.gif" lazyload alt="achievement_example"></p>
+<h3 id="新的成就页"><a href="#新的成就页" class="headerlink" title="新的成就页"></a>新的成就页</h3><p>Forge提供了一个名为<code>AchievementPage</code>的类，我们可以实例化这个类，并注册他们（这里新添加了两个成就）：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/achievement/AchievementLoader.java:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.github.ustc_zzzz.fmltutor.achievement;<br><br><span class="hljs-keyword">import</span> com.github.ustc_zzzz.fmltutor.FMLTutor;<br><span class="hljs-keyword">import</span> com.github.ustc_zzzz.fmltutor.block.BlockLoader;<br><span class="hljs-keyword">import</span> com.github.ustc_zzzz.fmltutor.item.ItemLoader;<br><br><span class="hljs-keyword">import</span> net.minecraft.init.Blocks;<br><span class="hljs-keyword">import</span> net.minecraft.stats.Achievement;<br><span class="hljs-keyword">import</span> net.minecraft.stats.AchievementList;<br><span class="hljs-keyword">import</span> net.minecraftforge.common.AchievementPage;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AchievementLoader</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Achievement</span> <span class="hljs-variable">worseThanPig</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Achievement</span>(<span class="hljs-string">&quot;achievement.fmltutor.worseThanPig&quot;</span>,<br>            <span class="hljs-string">&quot;fmltutor.worseThanPig&quot;</span>, <span class="hljs-number">5</span>, -<span class="hljs-number">4</span>, ItemLoader.goldenEgg, AchievementList.buildSword);<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Achievement</span> <span class="hljs-variable">buildGrassBlock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Achievement</span>(<span class="hljs-string">&quot;achievement.fmltutor.buildGrassBlock&quot;</span>,<br>            <span class="hljs-string">&quot;fmltutor.buildGrassBlock&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, Blocks.vine, <span class="hljs-literal">null</span>);<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Achievement</span> <span class="hljs-variable">explosionFromGrassBlock</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Achievement</span>(<span class="hljs-string">&quot;achievement.fmltutor.explosionFromGrassBlock&quot;</span>,<br>            <span class="hljs-string">&quot;fmltutor.explosionFromGrassBlock&quot;</span>, <span class="hljs-number">2</span>, -<span class="hljs-number">1</span>, BlockLoader.grassBlock, buildGrassBlock);<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">AchievementPage</span> <span class="hljs-variable">pageFMLTutor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AchievementPage</span>(FMLTutor.NAME, buildGrassBlock,<br>            explosionFromGrassBlock);<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AchievementLoader</span><span class="hljs-params">()</span><br>    &#123;<br>        worseThanPig.setSpecial().registerStat();<br>        buildGrassBlock.initIndependentStat().registerStat();<br>        explosionFromGrassBlock.setSpecial().registerStat();<br><br>        AchievementPage.registerAchievementPage(pageFMLTutor);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>AchievementPage</code>类是Forge提供的，作用就是把不同种类的成就以不同的成就页方式隔离。</p>
+<p><code>AchievementPage</code>类构造方法的第一个参数，是这个成就页的名称，这里用这个Mod的名称代替，而其第二个参数开始，就是这个成就页的所有成就，没有加入任何成就页的成就默认在原版的成就页上显示。</p>
+<p><code>initIndependentStat</code>方法用于设置这个成就是一个独立的、不依赖于其他成就的成就。很明显，一个成就页必须至少存在这样一个成就。</p>
+<p><code>registerAchievementPage</code>这个静态方法，就是注册这个成就页了。</p>
+<p>最后我们修改一下语言文件，把新添加的两个成就对应的显示文字加进去：</p>
+<p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lang">achievement.fmltutor.worseThanPig=Worse Than Pig<br>achievement.fmltutor.worseThanPig.desc=Die from inappropriate food for the pig<br>achievement.fmltutor.buildGrassBlock=Grass Block<br>achievement.fmltutor.buildGrassBlock.desc=Build a grass block<br>achievement.fmltutor.explosionFromGrassBlock=Grass Block Explosion<br>achievement.fmltutor.explosionFromGrassBlock.desc=Make an explosion of grass block by the click<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lang">achievement.fmltutor.worseThanPig=人不如猪<br>achievement.fmltutor.worseThanPig.desc=因为提供给猪错误的饲料而死<br>achievement.fmltutor.buildGrassBlock=草块<br>achievement.fmltutor.buildGrassBlock.desc=制作一个草块<br>achievement.fmltutor.explosionFromGrassBlock=草块爆炸<br>achievement.fmltutor.explosionFromGrassBlock.desc=通过点击草块使草块爆炸<br></code></pre></td></tr></table></figure>
+
+<h3 id="使成就可以被获得"><a href="#使成就可以被获得" class="headerlink" title="使成就可以被获得"></a>使成就可以被获得</h3><p>我们可以注意到，我们添加的成就，并不能通过任何自然的、符合成就本身目的的方式获得，所以我们添加并修改一些事件：</p>
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SubscribeEvent</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onPlayerClickGrassBlock</span><span class="hljs-params">(PlayerRightClickGrassBlockEvent event)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (!event.world.isRemote)<br>    &#123;<br>        <span class="hljs-type">BlockPos</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> event.pos;<br>        <span class="hljs-type">Entity</span> <span class="hljs-variable">tnt</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">EntityTNTPrimed</span>(event.world, pos.getX() + <span class="hljs-number">0.5</span>, pos.getY() + <span class="hljs-number">0.5</span>, pos.getZ() + <span class="hljs-number">0.5</span>, <span class="hljs-literal">null</span>);<br>        event.world.spawnEntityInWorld(tnt);<br>        event.entityPlayer.triggerAchievement(AchievementLoader.explosionFromGrassBlock);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:</code></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SubscribeEvent</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onLivingDeath</span><span class="hljs-params">(LivingDeathEvent event)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (event.entityLiving <span class="hljs-keyword">instanceof</span> EntityPlayer &amp;&amp; event.source.getDamageType().equals(<span class="hljs-string">&quot;byPig&quot;</span>))<br>    &#123;<br>        ((EntityPlayer) event.entityLiving).triggerAchievement(AchievementLoader.worseThanPig);<br>    &#125;<br>&#125;<br>    <br><span class="hljs-meta">@SubscribeEvent</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onPlayerItemCrafted</span><span class="hljs-params">(PlayerEvent.ItemCraftedEvent event)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (event.crafting.getItem() == Item.getItemFromBlock(BlockLoader.grassBlock))<br>    &#123;<br>        event.player.triggerAchievement(AchievementLoader.buildGrassBlock);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们通过调用玩家的<code>triggerAchievement</code>方法，成功地使玩家获得了我们想要获得的成就。</p>
+<h2 id="2-4-3-系统命令"><a href="#2-4-3-系统命令" class="headerlink" title="2.4.3 系统命令"></a>2.4.3 系统命令</h2><h2 id="2-4-4-声音系统"><a href="#2-4-4-声音系统" class="headerlink" title="2.4.4 声音系统"></a>2.4.4 声音系统</h2><h2 id="2-5-1-在世界生成矿物"><a href="#2-5-1-在世界生成矿物" class="headerlink" title="2.5.1 在世界生成矿物"></a>2.5.1 在世界生成矿物</h2><h2 id="2-5-2-注册和使用矿物字典"><a href="#2-5-2-注册和使用矿物字典" class="headerlink" title="2.5.2 注册和使用矿物字典"></a>2.5.2 注册和使用矿物字典</h2><h2 id="2-6-1-创建并注册一份流体"><a href="#2-6-1-创建并注册一份流体" class="headerlink" title="2.6.1 创建并注册一份流体"></a>2.6.1 创建并注册一份流体</h2><h2 id="2-6-2-为流体添加对应的桶"><a href="#2-6-2-为流体添加对应的桶" class="headerlink" title="2.6.2 为流体添加对应的桶"></a>2.6.2 为流体添加对应的桶</h2>
                 
               </div>
             
