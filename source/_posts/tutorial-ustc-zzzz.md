@@ -3,6 +3,7 @@ title: Minecraft 1.8.9 FML Mod 开发教程
 date: 2020-11-05 00:00:00
 tags: tutorial
 author: Yanbing Zhao
+sticky: 99
 ---
   
 **[原文链接](https://fmltutor.ustc-zzzz.net/)**
