@@ -3471,7 +3471,290 @@ Forge提供了一个名为`AchievementPage`的类，我们可以实例化这个�
 
 ## 2.4.3 系统命令
 
+### 系统命令的意义
+
+看起来，系统命令这种扩展，似乎只有服务端的插件才有做的必要，其实不然。这里，我们假设有一个Mod，被用于服务端，那么服务器的管理员该如何管控呢？
+
+我们设想这样一个情况，如果这个Mod具有复杂的任务树，那么服务器的管理员可能就存在通过一种方式让玩家一下子跳到某一个任务节点的需要。
+
+我们再设想，如果这个Mod给玩家添加了一个属性值，那个对于服务器的管理员来说，获取并试图修改这个属性值，可能就是一件十分必要的事情。
+
+那么而这样的事情该如何做到呢？显然系统命令是最适合的，通过敲指令来达到这种目的往往是服务器的管理员最擅长的事情，同时，通过命令方块往往能达到自动化的操作。
+
+### 目标
+
+我们这部分将要带领读者一步一步地制作一个系统命令，这里的示例命令名称为`position`，用途是显示一个玩家的位置。
+
+* 当输入命令：`/position`的时候显示自己的位置
+* 当输入命令：`/position Player`的时候显示特定玩家`Player`的位置
+* 当输入命令：`/position @a`的时候显示所有玩家的位置。
+
+### 新建一个系统命令
+
+这里，我们要用到一个之前讲到过的FML生命周期事件：`FMLServerStartingEvent`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/FMLTutor.java（部分）:`**
+
+```java
+        @EventHandler
+        public void serverStarting(FMLServerStartingEvent event)
+        {
+            proxy.serverStarting(event);
+        }
+```
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/CommonProxy.java（部分）:`**
+
+```java
+        public void serverStarting(FMLServerStartingEvent event)
+        {
+            
+        }
+```
+
+我们注意到`FMLServerStartingEvent`有一个名为`registerServerCommand`的方法，显而易见，我们需要通过调用这个方法来完成系统命令的注册。
+
+`registerServerCommand`方法需要一个实现了接口`ICommand`的对象，还好Minecraft这个游戏已经准备好了一个接口`ICommand`的方法大部分已经实现了的类：`CommandBase`。
+
+新建包`com.github.ustc_zzzz.fmltutor.command`在其中新建文件`CommandPosition.java`，并使`CommandPosition`类继承`CommandBase`类：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/command/CommandPosition.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.command;
+    
+    import net.minecraft.command.CommandBase;
+    import net.minecraft.command.CommandException;
+    import net.minecraft.command.ICommandSender;
+    
+    public class CommandPosition extends CommandBase
+    {
+        @Override
+        public String getCommandName()
+        {
+            return "position";
+        }
+    
+        @Override
+        public String getCommandUsage(ICommandSender sender)
+        {
+            return "commands.position.usage";
+        }
+    
+        @Override
+        public void processCommand(ICommandSender sender, String[] args) throws CommandException
+        {
+    
+        }
+    }
+```
+
+我们注意到，对于`ICommand`接口，`CommandBase`类还有三个方法没有实现，当然，这三个方法的内容其实都非常简单：
+
+* `getCommandName`方法就是这个命令的名称，也就是一个斜线之后紧接着出现的那个。
+* `getCommandUsage`方法就是这个命令的用法，当玩家输入`/help position`的时候就会出现。这里自然需要国际化，随后我们就会在语言文件中添加相应字段。
+* `processCommand`方法的含义更加显而易见，就是这个命令执行的时候会调用的方法。这里的`args`参数指的是**去掉命令名称本身**之后剩下的参数，比如如果我们输入`/position alice bob carol`，`args`就会是以`alice`、`bob`、`carol`为顺序的数组，如果我们只输入`/position`命令本身，那么`args`数组就是空的。
+
+`processCommand`方法可能会抛出`CommandException`异常，这是因为在执行命令的时候可能会出现各种各样的错误，比如请求的玩家不存在、需要整数的地方提供了一个浮点数、等等，这时候就应该直接抛出异常，阻止命令的继续执行。
+
+`CommandBase`类提供了很多静态方法，用于一些常见的命令操作，比如通过玩家名称取出对应的玩家实体、将字符串转换成整数、等等，开发者可以放心大胆地使用。这个部分使用了三个这样的方法：
+
+* `getPlayer`方法用于通过玩家名称获取对应的玩家实体，如果无法找到，则会抛出异常。
+* `getCommandSenderAsPlayer`方法用于获取输入该命令的玩家，如果该命令是命令方块等非玩家实体执行的，则会抛出异常。
+* `getListOfStringsMatchingLastWord`方法用于将当前输入的字符串匹配对应字符串数组中对应的字符串列表，常用于自动补全。
+
+更多方法的使用，只要参照原版的命令来模仿就可以了。
+
+我们这里完成`processCommand`方法：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/command/CommandPosition.java（部分）:`**
+
+```java
+        @Override
+        public void processCommand(ICommandSender sender, String[] args) throws CommandException
+        {
+            if (args.length > 1)
+            {
+                throw new WrongUsageException("commands.position.usage");
+            }
+            else
+            {
+                EntityPlayerMP entityPlayerMP = args.length > 0 ? CommandBase.getPlayer(sender, args[0])
+                        : CommandBase.getCommandSenderAsPlayer(sender);
+                Vec3 pos = entityPlayerMP.getPositionVector();
+                sender.addChatMessage(new ChatComponentTranslation("commands.position.success", entityPlayerMP.getName(),
+                        pos, entityPlayerMP.worldObj.provider.getDimensionName()));
+            }
+        }
+```
+
+代码的意思很简单，就是取出第一个参数对应的玩家实体，如果这个参数不存在就取自己，把其坐标和所在世界输出出来。如果提供的参数不正确，就会抛出异常。
+
+我们现在补充一下语言文件：
+
+**`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
+
+```lang
+ commands.position.usage=/position [player]
+ commands.position.success=The position of %1$s is %2$s in world %3$s
+```
+
+**`src/main/resources/assets/fmltutor/lang/zh_CN.lang（部分）:`**
+
+```lang
+ commands.position.usage=/position [玩家]
+ commands.position.success=玩家 %1$s 处于名为 %3$s 的世界，其坐标为 %2$s
+```
+
+除了上面`CommandBase`未实现的方法，还有一个方法往往需要覆写，这就是`getRequiredPermissionLevel`方法，这个方法返回执行该命令所需要的等级。
+
+等级一共分四种，对应的数字为1、2、3和4,等级为1代表任何玩家都可以执行，比如`/ping`这样的命令，等级为2代表命令方块可以执行，而等级4，则只有这个服务器的OP、还有单人模式下的作弊玩家可以执行。
+
+这里我们把等级设置成2：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/command/CommandPosition.java（部分）:`**
+
+```java
+        @Override
+        public int getRequiredPermissionLevel()
+        {
+            return 2;
+        }
+```
+
+然后我们注册这个命令，在包`com.github.ustc_zzzz.fmltutor.command`下新建文件`CommandLoader.java`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/command/CommandLoader.java:`**
+
+```java
+    package com.github.ustc_zzzz.fmltutor.command;
+    
+    import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+    
+    public class CommandLoader
+    {
+        public CommandLoader(FMLServerStartingEvent event)
+        {
+            event.registerServerCommand(new CommandPosition());
+        }
+    }
+```
+
+在`CommonProxy`中完成注册：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/CommonProxy.java（部分）:`**
+
+```java
+        public void serverStarting(FMLServerStartingEvent event)
+        {
+            new CommandLoader(event);
+        }
+```
+
+就可以了。
+
+最后补充一点，`@p`、`@a`这样的通配符在Minecraft执行这个命令之前就已经展开成特定的名称了，比如这个服务器有`Alice`和`Bob`两个人，现在执行命令`/position @a`，相当于执行了一次`/position Alice`和一次`/position Bob`，所以这方面是不需要开发者操心的。
+
+打开游戏试试吧～
+
+### 命令的自动补全
+
+很明显，没有自动补全的命令行界面，无论什么情况下（包括cmd），都是很难用的，所以这里我们理所应当地应该提供自动补全的功能。
+
+当然，实现自动补全的方法也并不难，这里只要实现`ICommand`的`addTabCompletionOptions`方法（也就是覆写`CommandBase`的对应方法）就可以了：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/command/CommandPosition.java（部分）:`**
+
+```java
+        @Override
+        public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos)
+        {
+            if (args.length == 1)
+            {
+                String[] names = MinecraftServer.getServer().getAllUsernames();
+                return CommandBase.getListOfStringsMatchingLastWord(args, names);
+            }
+            return null;
+        }
+```
+
+这里也就是说当玩家输入第一个参数的部分内容，比如`/position Ali`，或者仅仅输入了一个空格的时候，这个方法会让系统会找到所有这个服务器上的玩家，并且把对应的提供给系统。
+
+上面的例子中，如果服务器中有一个名为`Alice`的玩家，命令行界面可能就会自动补全成`/position Alice`。
+
 ## 2.4.4 声音系统
+
+### 概述
+
+一个好的游戏，往往都有着丰富的声音系统，比如说在Minecraft这个游戏中，当你靠近一个洞穴的时候系统就会播放风声，当你的附近有着僵尸的时候就会传来僵尸的吼叫声，玩家可以通过声音来判断目前的状态，这无疑增加了游戏的趣味性和冒险性。
+
+本部分内容将带领读者完成在Minecraft中导入声音、并在适当的时候播放声音的内容。我们假设读者已经拥有了想要应用在Minecraft中的**OGG格式的**音乐，也就是后缀名为ogg的音乐文件。这里我们采用的是本部分的作者使用计算机合成的一段非常短的，被用作音效的音乐。如有需要，可以通过这个[链接](https://github.com/ustc-zzzz/fmltutor/raw/master/src/main/resources/assets/fmltutor/sounds/fmltutor.ogg)获取音乐，并随意使用，作者不保留这段音乐的任何版权。
+
+### 音乐索引文件
+
+我们需要在`assets.fmltutor`包下创建一个文件：`sounds.json`：
+
+**`src/main/resources/assets/fmltutor/sounds.json:`**
+
+```json
+    {
+        "fmltutor.test": {
+            "category": "player", 
+            "sounds": [ 
+                "fmltutor" 
+            ] 
+        }
+    }
+```
+
+这个名为`sounds.json`的文件，就是这个Mod的音乐索引文件，其中贮存了各种各样音乐的索引。
+
+这个文件的内容，是一段非常普通的JSON文件，这个文件通过储存JSON对象的方式提供键值对。这里的键值对中，标识符为这个声音的名称，在这里就是`fmltutor.test`，在程序中调用的时候要加上Mod id，也就是`fmltutor:fmltutor.test`，而值就是关于这个声音的信息。
+
+* `category`表示的是这个声音的类型，总共有`ambient`（环境）、`weather`（天气）、`player`（玩家）、`neutral`（中立）、`hostile`（敌对）、`block`（方块）、`record`（唱片）、`music`（音乐）、`master`（控制）这八种类型。
+* `sounds`表示的就是声音了，这里表示的声音存放在这个音乐索引文件所在目录下的`sounds`文件夹下，在这里就是`assets.fmltutor.sounds`包下，这里表示的声音是一个列表，在游戏中会随机选取其中一个所代表的声音播放。
+
+`sounds`表示的声音列表还可以有`volume`、`pitch`等选项，分别表示响度、音量等。不过这里我们不作讨论，感兴趣的读者可以自己查找相关信息。
+
+然后我们在`assets.fmltutor.sounds`下放置一个名为`fmltutor.ogg`的**OGG格式**的音乐，就可以了。
+
+### 播放这个音乐
+
+`net.minecraft.world.World`类有数个用于播放音乐的方法，其中有两个方法比较常用，其中一个为`playSoundAtEntity`，用于在特定实体所在位置播放音乐，还有一个就是`playSound`方法，用于在特定位置播放特定的声音，还可以设定这个声音是否有声速延迟。
+
+我们先来看一下`playSound`方法：
+
+* 前三个参数表示这个声音所在位置的坐标，分别为`x`、`y`、`z`。
+* 第四个参数表示这个声音的名称，在上面的声音索引文件中有所提及。
+* 第五个参数表示这个声音的响度，默认响度为1.0F。
+* 第六个参数表示这个声音的音调，默认音调为1.0F。
+* 最后一个参数表示这个声音是否有延迟，比如雷声就存在着延迟。
+
+我们再来看一下`playSoundAtEntity`方法：
+
+* 第一个参数表示该实体，没有什么过多的解释。
+* 第二个参数表示声音的名称，和上面一样。
+* 最后两个参数分别表示声音的响度和音调，和上面的同样没有差别。
+
+有了这些，我们就可以试一试了：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:`**
+
+```java
+        @SubscribeEvent
+        public void onPlayerItemCrafted(PlayerEvent.ItemCraftedEvent event)
+        {
+            event.player.worldObj.playSoundAtEntity(event.player, "fmltutor:fmltutor.test", 1.0F, 1.0F);
+            if (event.crafting.getItem() == Item.getItemFromBlock(BlockLoader.grassBlock))
+            {
+                event.player.triggerAchievement(AchievementLoader.buildGrassBlock);
+            }
+        }
+```
+
+当玩家在工作台合成物品之后便会在玩家所在处播放一个叫作`fmltutor`的Mod下的一个名为`fmltutor.test`的声音，也就是这里的示例声音。
+
+打开游戏试试吧～
 
 ## 2.5.1 在世界生成矿物
 
