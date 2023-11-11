@@ -5,7 +5,7 @@ tags:
 slug: sodium
 ---
 
-<img src="https://cdn.modrinth.com/data/AANobbMI/icon.png" width="100px" height="100px">
+[<img src="https://cdn.modrinth.com/data/AANobbMI/icon.png" width="100px" height="100px">](https://modrinth.com/mod/sodium)
 
 | Minecraft 版本 | Sodium 最新版本 | 下载链接                                                                                                                                                                                                                                                                                   |
 | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -25,7 +25,7 @@ slug: sodium
 | 1.16.4         | 0.2.0           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/mc1.16.5-0.2.0/sodium-fabric-mc1.16.5-0.2.0%2Bbuild.4.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.16.5-0.2.0/sodium-fabric-mc1.16.5-0.2.0+build.4.jar)                                      |
 | 1.16.3         | 0.2.0           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/mc1.16.5-0.2.0/sodium-fabric-mc1.16.5-0.2.0%2Bbuild.4.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.16.5-0.2.0/sodium-fabric-mc1.16.5-0.2.0+build.4.jar)                                      |
 
-<img src="https://cdn.modrinth.com/data/4ZqxOvjD/icon.png" width="100px" height="100px">
+[<img src="https://cdn.modrinth.com/data/4ZqxOvjD/icon.png" width="100px" height="100px">](https://modrinth.com/mod/rubidium)
 
 | Minecraft 版本 | Rubidium 最新版本 | 下载链接                                                                                              |
 | -------------- | ----------------- | ----------------------------------------------------------------------------------------------------- |
@@ -40,12 +40,12 @@ slug: sodium
 | 1.18.1         | 0.5.0             |                                                                                                       |
 | **1.16.5**     | **0.2.13**        | **[Modrinth](https://cdn.modrinth.com/data/4ZqxOvjD/versions/YDAuLUY8/rubidium-mc1.16.5-0.2.13.jar)** |
 
-<img src="https://cdn.modrinth.com/data/sk9rgfiA/7f5be8843494e3c34bd628143cbb07bc6cbc77f7.png" width="100px" height="100px">
+[<img src="https://cdn.modrinth.com/data/sk9rgfiA/7f5be8843494e3c34bd628143cbb07bc6cbc77f7.png" width="100px" height="100px">](https://modrinth.com/mod/embeddium)
 
 | Minecraft 版本 | Embeddium 最新版本 | 下载链接                                                                                            |
 | -------------- | ------------------ | --------------------------------------------------------------------------------------------------- |
 | 1.20.2         | 0.2.2              | [Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/CTJ1cpIc/embeddium-0.2.2%2Bmc1.20.2.jar) |
-| **1.20.1**         | **0.2.5**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/FdJwjm0X/embeddium-0.2.5%2Bmc1.20.1.jar)** |
-| **1.19.2**         | **0.2.5**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/spYd2Trx/embeddium-0.2.5%2Bmc1.19.2.jar)** |
-| **1.18.2**         | **0.2.5**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/n4bb1wQI/embeddium-0.2.5%2Bmc1.18.2.jar)** |
-| **1.16.5**         | **0.2.6**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/BzoeMuKp/embeddium-0.2.6%2Bmc1.16.5.jar)** |
+| **1.20.1**         | **0.2.8**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/bU0mTIXZ/embeddium-0.2.8%2Bmc1.20.1.jar)** |
+| **1.19.2**         | **0.2.7**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/xu0nloU9/embeddium-0.2.7%2Bmc1.19.2.jar)** |
+| **1.18.2**         | **0.2.7**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/X2vyBV9U/embeddium-0.2.7%2Bmc1.18.2.jar)** |
+| **1.16.5**         | **0.2.7**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/GDJzfqu2/embeddium-0.2.7%2Bmc1.16.5.jar)** |
