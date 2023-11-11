@@ -4,7 +4,7 @@ date: 2023-08-03 14:00:53
 tags:
 ---
 
-<img src="https://cdn.modrinth.com/data/mOgUt4GM/icon.png" width="100px" height="100px">
+[<img src="https://cdn.modrinth.com/data/mOgUt4GM/icon.png" width="100px" height="100px">](https://modrinth.com/mod/modmenu)
 
 | Minecraft 版本 | Mod Menu 最新版本 | 下载链接                                                                                                                                                            |
 | -------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18,9 +18,9 @@ tags:
 | 1.19           | 4.0.4             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/4.0.4/modmenu-4.0.4.jar)                                                                                 |
 | **1.18.2**     | **3.2.5**         | **[Curseforge](https://edge.forgecdn.net/files/4145/213/modmenu-3.2.5.jar) [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/nVxObSbX/modmenu-3.2.5.jar)** |
 | 1.18.1         | 3.0.1             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/3.0.1/modmenu-3.0.1.jar)                                                                                 |
-| 1.18           | 3.0.0             |                                                                                                                                                                     |
-| 1.17.1         | 2.0.17            |                                                                                                                                                                     |
-| 1.17           | 2.0.17            |                                                                                                                                                                     |
+| 1.18           | 3.0.1             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/3.0.1/modmenu-3.0.1.jar)                                                                                 |
+| 1.17.1         | 2.0.17            | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/7kh2ofyR/modmenu-2.0.17.jar)                                                                             |
+| 1.17           | 2.0.17            | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/7kh2ofyR/modmenu-2.0.17.jar)                                                                             |
 | **1.16.5**     | **1.16.23**       | **[Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/1.16.23/modmenu-1.16.23.jar)**                                                                         |
 | 1.16.4         | 1.16.7            |                                                                                                                                                                     |
 | 1.16.3         | 1.14.9+build.13   |                                                                                                                                                                     |
