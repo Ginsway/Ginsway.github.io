@@ -1,6 +1,7 @@
 ---
 title: Forge 与 NeoForge 版本列表
-date: 2023-07-28 15:33:19
+date: 2023-07-28 
+updated: 2023-11-11
 tags:
 ---
 

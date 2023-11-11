@@ -1,6 +1,7 @@
 ---
 title: Sodium & Rubidium & Embeddium 版本列表
-date: 2023-08-04 22:19:33
+date: 2023-08-04
+updated: 2023-11-11
 tags: 
 slug: sodium
 ---
