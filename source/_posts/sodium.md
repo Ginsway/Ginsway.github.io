@@ -45,8 +45,8 @@ slug: sodium
 
 | Minecraft 版本 | Embeddium 最新版本 | 下载链接                                                                                            |
 | -------------- | ------------------ | --------------------------------------------------------------------------------------------------- |
-| 1.20.2         | 0.2.2              | [Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/CTJ1cpIc/embeddium-0.2.2%2Bmc1.20.2.jar) |
-| **1.20.1**         | **0.2.8**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/bU0mTIXZ/embeddium-0.2.8%2Bmc1.20.1.jar)** |
-| **1.19.2**         | **0.2.7**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/xu0nloU9/embeddium-0.2.7%2Bmc1.19.2.jar)** |
-| **1.18.2**         | **0.2.7**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/X2vyBV9U/embeddium-0.2.7%2Bmc1.18.2.jar)** |
-| **1.16.5**         | **0.2.7**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/GDJzfqu2/embeddium-0.2.7%2Bmc1.16.5.jar)** |
+| 1.20.2         | 0.2.10              | [Modrinth (Forge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/CMIY4YD6/embeddium-0.2.10%2Bmc1.20.2.jar) [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/J5gD4WO0/embeddium-0.2.10%2Bmc1.20.2.jar) |
+| **1.20.1**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/3Ib0aVnm/embeddium-0.2.10%2Bmc1.20.1.jar)** |
+| **1.19.2**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/k11ORQp6/embeddium-0.2.10%2Bmc1.19.2.jar)** |
+| **1.18.2**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/DlmUznIq/embeddium-0.2.10%2Bmc1.18.2.jar)** |
+| **1.16.5**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/StgdrbYM/embeddium-0.2.10%2Bmc1.16.5.jar)** |
