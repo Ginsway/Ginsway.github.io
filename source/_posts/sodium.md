@@ -1,7 +1,7 @@
 ---
 title: Sodium & Rubidium & Embeddium 版本列表
 date: 2023-08-04
-updated: 2023-11-11
+updated: 2023-12-15
 tags: 
 slug: sodium
 ---
@@ -10,7 +10,9 @@ slug: sodium
 
 | Minecraft 版本 | Sodium 最新版本 | 下载链接                                                                                                                                                                                                                                                                                   |
 | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.20.2         | 0.5.3           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/bbP1qBMr/sodium-fabric-mc1.20.2-0.5.3.jar)                                                              [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20.2-0.5.3/sodium-fabric-mc1.20.2-0.5.3.jar) |
+| 1.20.4         | 0.5.5           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/InGKdfel/sodium-fabric-mc1.20.3-0.5.5.jar)                                                              [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20.3-0.5.5/sodium-fabric-mc1.20.3-0.5.5.jar) |
+| 1.20.3         | 0.5.5           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/InGKdfel/sodium-fabric-mc1.20.3-0.5.5.jar)                                                              [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20.3-0.5.5/sodium-fabric-mc1.20.3-0.5.5.jar) |
+| 1.20.2         | 0.5.5           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/pmgeU5yX/sodium-fabric-mc1.20.2-0.5.5.jar)                                                              [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20.2-0.5.5/sodium-fabric-mc1.20.2-0.5.5.jar) |
 | **1.20.1**     | **0.5.3**       | **[Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/4OZL6q9h/sodium-fabric-mc1.20.1-0.5.3.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20.1-0.5.3/sodium-fabric-mc1.20.1-0.5.3.jar)**                                                          |
 | 1.20           | 0.4.10          | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/vgceLbdH/sodium-fabric-mc1.20-0.4.10%2Bbuild.27.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20-0.4.10/sodium-fabric-mc1.20-0.4.10+build.27.jar)                                             |
 | **1.19.4**     | **0.4.10**      | **[Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/b4hTi3mo/sodium-fabric-mc1.19.4-0.4.10%2Bbuild.24.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.19.4-0.4.10/sodium-fabric-mc1.19.4-0.4.10+build.24.jar)**                                   |
@@ -43,10 +45,12 @@ slug: sodium
 
 [<img src="https://cdn.modrinth.com/data/sk9rgfiA/7f5be8843494e3c34bd628143cbb07bc6cbc77f7.png" width="100px" height="100px">](https://modrinth.com/mod/embeddium)
 
-| Minecraft 版本 | Embeddium 最新版本 | 下载链接                                                                                            |
-| -------------- | ------------------ | --------------------------------------------------------------------------------------------------- |
-| 1.20.2         | 0.2.10              | [Modrinth (Forge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/CMIY4YD6/embeddium-0.2.10%2Bmc1.20.2.jar) [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/J5gD4WO0/embeddium-0.2.10%2Bmc1.20.2.jar) |
-| **1.20.1**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/3Ib0aVnm/embeddium-0.2.10%2Bmc1.20.1.jar)** |
-| **1.19.2**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/k11ORQp6/embeddium-0.2.10%2Bmc1.19.2.jar)** |
-| **1.18.2**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/DlmUznIq/embeddium-0.2.10%2Bmc1.18.2.jar)** |
-| **1.16.5**         | **0.2.10**              | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/StgdrbYM/embeddium-0.2.10%2Bmc1.16.5.jar)** |
+| Minecraft 版本 | Embeddium 最新版本（Forge / Neoforge） | 下载链接                                                                                                                                                                                                                     |
+| -------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.20.4         | ~ / 0.2.13                             | [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/NhxNCVb8/embeddium-0.2.13%2Bmc1.20.4.jar)                                                                                                              |
+| 1.20.3         | ~ / 0.2.12                             | [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/N21UWLtA/embeddium-0.2.12%2Bmc1.20.3.jar)                                                                                                              |
+| 1.20.2         | 0.2.10 / 0.2.12                        | [Modrinth (Forge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/CMIY4YD6/embeddium-0.2.10%2Bmc1.20.2.jar) [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/8QyTfW8d/embeddium-0.2.12%2Bmc1.20.2.jar) |
+| **1.20.1**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/tDExzaO7/embeddium-0.2.13%2Bmc1.20.1.jar)**                                                                                                                     |
+| **1.19.2**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/g9Z4ICTo/embeddium-0.2.13%2Bmc1.19.2.jar)**                                                                                                                     |
+| **1.18.2**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/nbnS4lv3/embeddium-0.2.13%2Bmc1.18.2.jar)**                                                                                                                     |
+| **1.16.5**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/JhR2FXy9/embeddium-0.2.13%2Bmc1.16.5.jar)**                                                                                                                     |
