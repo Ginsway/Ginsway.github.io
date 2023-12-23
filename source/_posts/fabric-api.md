@@ -1,13 +1,13 @@
 ---
 title: Fabric API 与 Quilted Fabric API / Quilt Standard Libraries 版本列表
 date: 2023-07-28
-updated: 2023-11-11
+updated: 2023-12-23
 tags:
 ---
 [<img src="https://cdn.modrinth.com/data/P7dR8mSH/icon.png" width="100px" height="100px">](https://modrinth.com/mod/fabric-api)
 | Minecraft 版本 | Fabric API 最新版本 | 下载链接                                                                                                                                                                                                                                                                                                                                                                       |
 | -------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.20.4         | 0.91.2+1.20.4       | [Curseforge](https://edge.forgecdn.net/files/4940/245/fabric-api-0.91.2%2b1.20.4.jar)     [Modrinth](https://cdn.modrinth.com/data/P7dR8mSH/versions/yGY1P8Yr/fabric-api-0.91.2%2B1.20.4.jar)                                                        [Official](https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.91.2%2B1.20.4/fabric-api-0.91.2%2B1.20.4.jar)  |
+| 1.20.4         | 0.91.3+1.20.4       | [Curseforge](https://edge.forgecdn.net/files/4960/575/fabric-api-0.91.3%2b1.20.4.jar)     [Modrinth](https://cdn.modrinth.com/data/P7dR8mSH/versions/JQ07mKWY/fabric-api-0.91.3%2B1.20.4.jar)                                                        [Official](https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.91.3%2B1.20.4/fabric-api-0.91.3%2B1.20.4.jar)  |
 | 1.20.3         | 0.91.1+1.20.3       | [Curseforge](https://edge.forgecdn.net/files/4905/493/fabric-api-0.91.1%2b1.20.3.jar)       [Modrinth](https://cdn.modrinth.com/data/P7dR8mSH/versions/Yolngp3s/fabric-api-0.91.1%2B1.20.3.jar)                                                       [Official](https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.91.1%2B1.20.3/fabric-api-0.91.1%2B1.20.3.jar) |
 | 1.20.2         | 0.91.2+1.20.2       | [Curseforge](https://edge.forgecdn.net/files/4940/225/fabric-api-0.91.2%2b1.20.2.jar)          [Modrinth](https://cdn.modrinth.com/data/P7dR8mSH/versions/fdestf2d/fabric-api-0.91.2%2B1.20.2.jar)                                                    [Official](https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.91.2%2B1.20.2/fabric-api-0.91.2%2B1.20.2.jar) |
 | **1.20.1**     | **0.91.0+1.20.1**   | **[Curseforge](https://edge.forgecdn.net/files/4902/738/fabric-api-0.91.0%2b1.20.1.jar) [Modrinth](https://cdn.modrinth.com/data/P7dR8mSH/versions/YblXfKtI/fabric-api-0.91.0%2B1.20.1.jar) [Official](https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.91.0%2B1.20.1/fabric-api-0.91.0%2B1.20.1.jar)**                                                         |
