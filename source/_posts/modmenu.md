@@ -1,7 +1,7 @@
 ---
 title: Mod Menu 系列版本列表
 date: 2023-08-03
-updated: 2023-11-11
+updated: 2023-12-23
 tags:
 ---
 
@@ -9,7 +9,9 @@ tags:
 
 | Minecraft 版本 | Mod Menu 最新版本 | 下载链接                                                                                                                                                            |
 | -------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.20.2         | 8.0.0             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/TwfjidT5/modmenu-8.0.0.jar)                                                                              |
+| 1.20.4         | 9.0.0             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/sjtVVlsA/modmenu-9.0.0.jar)                                                                              |
+| 1.20.3         | 9.0.0             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/sjtVVlsA/modmenu-9.0.0.jar)                                                                              |
+| 1.20.2         | 8.0.1             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/fCQyI9Zj/modmenu-8.0.1.jar)                                                                              |
 | **1.20.1**     | **7.2.2**         | **[Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/lEkperf6/modmenu-7.2.2.jar)**                                                                          |
 | 1.20           | 7.0.1             | [Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/RTFDnTKf/modmenu-7.0.1.jar)                                                                              |
 | **1.19.4**     | **6.3.1**         | **[Modrinth](https://cdn.modrinth.com/data/mOgUt4GM/versions/lMqXEzUw/modmenu-6.3.1.jar)**                                                                          |
