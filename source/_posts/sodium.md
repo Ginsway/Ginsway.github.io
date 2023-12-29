@@ -1,7 +1,7 @@
 ---
 title: Sodium & Rubidium & Embeddium 版本列表
 date: 2023-08-04
-updated: 2023-12-15
+updated: 2023-12-29
 tags: 
 slug: sodium
 ---
@@ -47,10 +47,10 @@ slug: sodium
 
 | Minecraft 版本 | Embeddium 最新版本（Forge / Neoforge） | 下载链接                                                                                                                                                                                                                     |
 | -------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.20.4         | ~ / 0.2.13                             | [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/NhxNCVb8/embeddium-0.2.13%2Bmc1.20.4.jar)                                                                                                              |
+| 1.20.4         | ~ / 0.2.15                             | [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/PYQ8JPHe/embeddium-0.2.15%2Bmc1.20.4.jar)                                                                                                              |
 | 1.20.3         | ~ / 0.2.12                             | [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/N21UWLtA/embeddium-0.2.12%2Bmc1.20.3.jar)                                                                                                              |
 | 1.20.2         | 0.2.10 / 0.2.12                        | [Modrinth (Forge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/CMIY4YD6/embeddium-0.2.10%2Bmc1.20.2.jar) [Modrinth (NeoForge)](https://cdn.modrinth.com/data/sk9rgfiA/versions/8QyTfW8d/embeddium-0.2.12%2Bmc1.20.2.jar) |
-| **1.20.1**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/tDExzaO7/embeddium-0.2.13%2Bmc1.20.1.jar)**                                                                                                                     |
-| **1.19.2**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/g9Z4ICTo/embeddium-0.2.13%2Bmc1.19.2.jar)**                                                                                                                     |
-| **1.18.2**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/nbnS4lv3/embeddium-0.2.13%2Bmc1.18.2.jar)**                                                                                                                     |
-| **1.16.5**     | **0.2.13**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/JhR2FXy9/embeddium-0.2.13%2Bmc1.16.5.jar)**                                                                                                                     |
+| **1.20.1**     | **0.2.16**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/WqH4m6Io/embeddium-0.2.16%2Bmc1.20.1.jar)**                                                                                                                     |
+| **1.19.2**     | **0.2.16**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/J35HEDEt/embeddium-0.2.16%2Bmc1.19.2.jar)**                                                                                                                     |
+| **1.18.2**     | **0.2.16**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/i6olgd4m/embeddium-0.2.16%2Bmc1.18.2.jar)**                                                                                                                     |
+| **1.16.5**     | **0.2.16**                             | **[Modrinth](https://cdn.modrinth.com/data/sk9rgfiA/versions/CWLgixEM/embeddium-0.2.16%2Bmc1.16.5.jar)**                                                                                                                     |
