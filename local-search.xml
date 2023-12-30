@@ -5,10 +5,23 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/e5815314338f/"/>
-    <url>/e5815314338f/</url>
+    <link href="/a30ed03deca6/"/>
+    <url>/a30ed03deca6/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>optfine</title>
+    <link href="/cceb9d1cf2a9/"/>
+    <url>/cceb9d1cf2a9/</url>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>Minecraft 版本</th><th>Optfine 最新版本</th></tr></thead><tbody><tr><td>1.20.4</td><td>I7 pre2</td></tr><tr><td>1.20.2</td><td>I7 pre1</td></tr><tr><td><strong>1.20.1</strong></td><td><strong>I6</strong></td></tr><tr><td>1.20</td><td>I5 pre5</td></tr><tr><td><strong>1.19.4</strong></td><td><strong>I4</strong></td></tr><tr><td>1.19.3</td><td>I3</td></tr><tr><td><strong>1.19.2</strong></td><td><strong>I2</strong></td></tr><tr><td>1.19.1</td><td>H9</td></tr><tr><td>1.19</td><td>H9</td></tr><tr><td><strong>1.18.2</strong></td><td><strong>H9</strong></td></tr><tr><td>1.18.1</td><td>H6</td></tr><tr><td>1.18</td><td>H3</td></tr><tr><td>1.17.1</td><td>H2 pre1</td></tr><tr><td>1.17</td><td>G9 pre26</td></tr><tr><td><strong>1.16.5</strong></td><td><strong>G8</strong></td></tr></tbody></table>]]></content>
     
     
     
