@@ -5,10 +5,23 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/a30ed03deca6/"/>
-    <url>/a30ed03deca6/</url>
+    <link href="/c13ee6492ff2/"/>
+    <url>/c13ee6492ff2/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>item_manger</title>
+    <link href="/e1979adc653c/"/>
+    <url>/e1979adc653c/</url>
+    
+    <content type="html"><![CDATA[<p>Just Enough Items (JEI)</p><table><thead><tr><th>Minecraft 版本</th><th>JEI 最新版本</th><th>下载链接</th></tr></thead><tbody><tr><td>1.20.2</td><td>16.0.0.28</td><td><a href="https://edge.forgecdn.net/files/4767/571/jei-1.20.2-forge-16.0.0.28.jar">CurseForge</a></td></tr><tr><td><strong>1.20.1</strong></td><td><strong>15.2.0.27</strong></td><td><strong><a href="https://edge.forgecdn.net/files/4712/868/jei-1.20.1-forge-15.2.0.27.jar">CurseForge</a></strong></td></tr><tr><td>1.20</td><td>14.0.0.11</td><td><a href="https://edge.forgecdn.net/files/4581/323/jei-1.20-forge-14.0.0.11.jar">CurseForge</a></td></tr><tr><td><strong>1.19.4</strong></td><td><strong>13.1.0.16</strong></td><td><strong><a href="https://edge.forgecdn.net/files/4712/556/jei-1.19.4-forge-13.1.0.16.jar">CurseForge</a></strong></td></tr><tr><td>1.19.3</td><td>12.4.0.22</td><td><a href="https://edge.forgecdn.net/files/4455/246/jei-1.19.3-forge-12.4.0.22.jar">CurseForge</a></td></tr><tr><td><strong>1.19.2</strong></td><td><strong>11.6.0.1018</strong></td><td><strong><a href="https://edge.forgecdn.net/files/4712/866/jei-1.19.2-forge-11.6.0.1018.jar">CurseForge</a></strong></td></tr><tr><td>1.19.1</td><td>11.2.0.244</td><td><a href="https://edge.forgecdn.net/files/3922/508/jei-1.19.1-forge-11.2.0.244.jar">CurseForge</a></td></tr><tr><td>1.19</td><td>11.1.1.239</td><td><a href="https://edge.forgecdn.net/files/3903/68/jei-1.19-forge-11.1.1.239.jar">CurseForge</a></td></tr></tbody></table>]]></content>
     
     
     
