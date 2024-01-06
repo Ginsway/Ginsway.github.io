@@ -1,20 +1,23 @@
 ---
 title: Forge 与 NeoForge 版本列表
 date: 2023-07-28 
-updated: 2023-12-29
+updated: 2024-01-06
 tags:
 ---
-
+[<img src="https://neoforged.net/img/content/branding/banner.png" height="100px">](https://neoforged.net/)  
+[下载页面](https://projects.neoforged.net/neoforged/neoforge)
 | Minecraft版本 | NeoForge 最新版本 | 下载链接                                                                                                                                                                                                                                   |
 | ------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.20.4        | 20.4.63-beta      | [Installer](https://maven.neoforged.net/releases/net/neoforged/neoforge/20.4.63-beta/neoforge-20.4.63-beta-installer.jar)                                                                                                                  |
+| 1.20.4        | 20.4.79-beta      | [Installer](https://maven.neoforged.net/releases/net/neoforged/neoforge/20.4.79-beta/neoforge-20.4.79-beta-installer.jar)                                                                                                                  |
 | 1.20.3        | 20.3.8-beta       | [Installer](https://maven.neoforged.net/releases/net/neoforged/neoforge/20.3.8-beta/neoforge-20.3.8-beta-installer.jar)                                                                                                                    |
 | 1.20.2        | 20.2.88          | [Installer](https://maven.neoforged.net/releases/net/neoforged/neoforge/20.2.88/neoforge-20.2.88-installer.jar)  |
 | **1.20.1**    | **47.1.84**       | **[Installer](https://maven.neoforged.net/releases/net/neoforged/forge/1.20.1-47.1.84/forge-1.20.1-47.1.84-installer.jar)** |
 
+[<img src="https://files.minecraftforge.net/static/images/logo.svg" height="100px">](https://forums.minecraftforge.net/)  
+[下载页面](https://files.minecraftforge.net/net/minecraftforge/forge/)
 | Minecraft版本 | Forge 最新版本   | 下载链接                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.20.4        | 49.0.12           | [Installer](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.12/forge-1.20.4-49.0.12-installer.jar) [Mdk](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.12/forge-1.20.4-49.0.12-mdk.zip)                                                                                                                                                                                                          |
+| 1.20.4        | 49.0.14           | [Installer](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.14/forge-1.20.4-49.0.14-installer.jar) [Mdk](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.14/forge-1.20.4-49.0.14-mdk.zip)                                                                                                                                                                                                          |
 | 1.20.3        | 49.0.2           | [Installer](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.3-49.0.2/forge-1.20.3-49.0.2-installer.jar) [Mdk](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.3-49.0.2/forge-1.20.3-49.0.2-mdk.zip)                                                                                                                                                                                                          |
 | 1.20.2        | 48.1.0           | [Installer](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.2-48.1.0/forge-1.20.2-48.1.0-installer.jar) [Mdk](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.2-48.1.0/forge-1.20.2-48.1.0-mdk.zip)                                                                                                                                                                                                          |
 | **1.20.1**    | **47.2.19**      | **[Installer](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.19/forge-1.20.1-47.2.19-installer.jar) [Mdk](https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.19/forge-1.20.1-47.2.19-mdk.zip)**                                                                                                                                                                                                  |
