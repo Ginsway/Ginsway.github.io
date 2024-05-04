@@ -10,10 +10,12 @@ slug: sodium
 
 | Minecraft 版本 | Sodium 最新版本 | 下载链接                                                                                                                                                                                                                                                                                   |
 | -------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1.20.4         | 0.5.8           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/xNJ0Mpbx/sodium-fabric-0.5.6%2Bmc1.20.3.jar)|
-| 1.20.3         | 0.5.8           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/xNJ0Mpbx/sodium-fabric-0.5.6%2Bmc1.20.3.jar)|
+| 1.20.6         | 0.5.8           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/IZskON6d/sodium-fabric-0.5.8%2Bmc1.20.6.jar)|
+| 1.20.5         | 0.5.8           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/IZskON6d/sodium-fabric-0.5.8%2Bmc1.20.6.jar)|
+| 1.20.4         | 0.5.8           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/4GyXKCLd/sodium-fabric-0.5.8%2Bmc1.20.4.jar)|
+| 1.20.3         | 0.5.8           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/4GyXKCLd/sodium-fabric-0.5.8%2Bmc1.20.4.jar)|
 | 1.20.2         | 0.5.5           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/pmgeU5yX/sodium-fabric-mc1.20.2-0.5.5.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20.2-0.5.5/sodium-fabric-mc1.20.2-0.5.5.jar) |
-| **1.20.1**     | **0.5.8**       | **[Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/rUXIwGKA/sodium-fabric-0.5.6%2Bmc1.20.1.jar)**                                                          |
+| **1.20.1**     | **0.5.8**       | **[Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/mhZtY2lR/sodium-fabric-0.5.8%2Bmc1.20.1.jar)**                                                          |
 | 1.20           | 0.4.10          | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/vgceLbdH/sodium-fabric-mc1.20-0.4.10%2Bbuild.27.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.20-0.4.10/sodium-fabric-mc1.20-0.4.10+build.27.jar)                                             |
 | **1.19.4**     | **0.4.10**      | **[Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/b4hTi3mo/sodium-fabric-mc1.19.4-0.4.10%2Bbuild.24.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.19.4-0.4.10/sodium-fabric-mc1.19.4-0.4.10+build.24.jar)**                                   |
 | 1.19.3         | 0.4.9           | [Modrinth](https://cdn.modrinth.com/data/AANobbMI/versions/idtcaIVT/sodium-fabric-mc1.19.3-0.4.9%2Bbuild.23.jar) [Github](https://github.com/CaffeineMC/sodium-fabric/releases/download/mc1.19.3-0.4.9/sodium-fabric-mc1.19.3-0.4.9+build.23.jar)                                          |
