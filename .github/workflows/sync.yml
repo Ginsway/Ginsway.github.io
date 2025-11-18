@@ -1,0 +1,26 @@
+name: Sync main to netlify
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Configure Git
+      run: |
+        git config user.name "ginsway[bot]"
+        git config user.email "ginsway@qq.com"
+
+    - name: Sync branches
+      run: |
+        # 直接推送 main 到 netlify 分支（创建或更新）
+        git push origin main:netlify --force
