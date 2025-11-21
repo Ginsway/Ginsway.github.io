@@ -1,4 +1,4 @@
-name: Pages
+name: Pages Deploy
 
 on:
     push:
@@ -11,7 +11,8 @@ jobs:
         permissions:
             contents: write
         steps:
-            - uses: actions/checkout@v5
+            - name: Checkout
+              uses: actions/checkout@v6
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
               with:
