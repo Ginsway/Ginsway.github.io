@@ -5,10 +5,23 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/56885c7961f5/"/>
-    <url>/56885c7961f5/</url>
+    <link href="/ca3de8fd1052/"/>
+    <url>/ca3de8fd1052/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>在 Harmony 6 的卓易通上使用 FCL 启动 MC 避坑记录</title>
+    <link href="/3847246cc0a6/"/>
+    <url>/3847246cc0a6/</url>
+    
+    <content type="html"><![CDATA[<p>最近尝试在原生鸿蒙上启动 MC，但是只有使用 JRE8 的 1.12 及以下版本可以启动。</p><p>因此猜测是JRE的问题。Harmony 6 上的卓易通里的 JRE 貌似有些不完整，缺少一些库。</p><p><strong>解决办法使用<a href="https://github.com/aaaapai/android-openjdk-build">aaaapai&#x2F;android-openjdk-build</a>这个第三方修改版jre。</strong></p><p>大部分高版本的模组都只支持 Java 21，但是这个仓库里只提供了 JRE25 的构建成品，JRE21 的构建成品因为过了太久而被 Github 删掉了。因此作者重新构建了一份 JRE21 ，放在了 我克隆的仓库<a href="https://github.com/Ginsway/android-openjdk-build/releases">releases</a>里，有需要的可以直接下载。</p><hr><p>另外有2个小贴士：</p><p>1.在使用卓易通自带的文件互传时，在容器内部对应的目录叫做 <code>ShareFile/</code><br>2.导入的文件应该是后缀为 <code>tar.xz</code> 的压缩包</p>]]></content>
     
     
     
