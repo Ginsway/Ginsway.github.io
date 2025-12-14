@@ -11,6 +11,7 @@ tags:
 **解决办法使用[aaaapai/android-openjdk-build](https://github.com/aaaapai/android-openjdk-build)这个第三方修改版jre。**
 
 如果你使用的一些模组无法使用 Java 25 运行。可以尝试更新模组，如果再不行可以试试用 Java 21。
+
 但是这个仓库里只提供了 JRE25 的构建成品，JRE21 的构建成品因为过了太久而被 Github 删掉了。因此重新构建了一份 JRE21 ，放在了 我克隆的仓库[releases](https://github.com/Ginsway/android-openjdk-build/releases)里，有需要的可以直接下载。
 
 
