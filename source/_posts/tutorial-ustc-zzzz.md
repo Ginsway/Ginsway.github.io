@@ -2005,7 +2005,7 @@ ToolMaterial的构造方法共有五个参数：
 
 **`src/main/resources/assets/fmltutor/textures/items/redstone_pickaxe.png:`**
 
-![redstone_pickaxe](resources/redstone_pickaxe.png)
+![redstone_pickaxe](redstone_pickaxe.png)
 
 ### 一些例行公事
 
@@ -2147,7 +2147,7 @@ ToolMaterial的构造方法共有五个参数：
 
 **`src/main/resources/assets/fmltutor/textures/items/redstone_apple.png:`**
 
-![redstone_apple](resources/redstone_apple.png)
+![redstone_apple](redstone_apple.png)
 
 **`src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:`**
 
@@ -2471,19 +2471,19 @@ ArmorMaterial的构造方法共有四个参数：
 
 **`src/main/resources/assets/fmltutor/textures/items/redstone_helmet.png:`**
 
-![redstone_helmet](resources/redstone_helmet.png)
+![redstone_helmet](redstone_helmet.png)
 
 **`src/main/resources/assets/fmltutor/textures/items/redstone_chestplate.png:`**
 
-![redstone_chestplate](resources/redstone_chestplate.png)
+![redstone_chestplate](redstone_chestplate.png)
 
 **`src/main/resources/assets/fmltutor/textures/items/redstone_leggings.png:`**
 
-![redstone_leggings](resources/redstone_leggings.png)
+![redstone_leggings](redstone_leggings.png)
 
 **`src/main/resources/assets/fmltutor/textures/items/redstone_boots.png:`**
 
-![redstone_boots](resources/redstone_boots.png)
+![redstone_boots](redstone_boots.png)
 
 注册：
 
@@ -2558,7 +2558,7 @@ ArmorMaterial的构造方法共有四个参数：
 
 现在打开原版的材质图，我们可以注意到一团乱糟糟的外观碎片被放到了一起。实际上，这些碎片的摆放位置都是有规律的：
 
-![armor_texture_analysis](resources/armor_texture_analysis.png)
+![armor_texture_analysis](armor_texture_analysis.png)
 
 （材质分区图，其中F表示前面，B表示后面，L表示左面。R表示右面，U表示顶面，D表示底面，紫色背景表示尺寸，每格大小为7x7，边框尺寸为1）
 
@@ -2577,17 +2577,17 @@ ArmorMaterial的构造方法共有四个参数：
 
 这里准备了一张已经划分好不同部分的，大小为64x32的图，以方便读者设计盔甲。读者可以下载然后修改：
 
-![armor_texture](resources/armor_texture.png)
+![armor_texture](armor_texture.png)
 
 我们这里使用这样的两张图（没错。。。调色。。。）：
 
 **`src/main/resources/assets/fmltutor/textures/models/armor/redstone_layer_1.png:`**
 
-![redstone_layer_1](resources/redstone_layer_1.png)
+![redstone_layer_1](redstone_layer_1.png)
 
 **`src/main/resources/assets/fmltutor/textures/models/armor/redstone_layer_2.png:`**
 
-![redstone_layer_2](resources/redstone_layer_2.png)
+![redstone_layer_2](redstone_layer_2.png)
 
 打开游戏试试吧～
 
@@ -2885,7 +2885,7 @@ ArmorMaterial的构造方法共有四个参数：
 
 下面是一张拥有此种附魔的钻石镐示例：
 
-![fire_burn](resources/fire_burn.png)
+![fire_burn](fire_burn.png)
 
 ### 完善你的附魔
 
@@ -3012,7 +3012,7 @@ ArmorMaterial的构造方法共有四个参数：
 
 `setIconIndex`方法表示这个药水效果在显示的时候使用的图标在下面这张图（来自`assets.minecraft.textures.gui.container.inventory.png`）中的位置，两个参数表示x和y坐标，这里设置为和速度药水效果的图标一致：
 
-![inventory_potion_analysis](resources/inventory_potion_analysis.png)
+![inventory_potion_analysis](inventory_potion_analysis.png)
 
 `setPotionName`方法和附魔的`setName`方法，以及方块、物品等的`setUnlocalizedName`方法类似，我们修改一下语言文件：
 
@@ -3125,7 +3125,7 @@ ArmorMaterial的构造方法共有四个参数：
 
 **`src/main/resources/assets/fmltutor/textures/gui/potion.png:`**
 
-![gui_potion](resources/gui_potion.png)
+![gui_potion](gui_potion.png)
 
 （轻点打我。。。这个想法是一个叫作Blair的同学提供的，也为了纪念本部分的章节号23333333）<br>（我相信知道Blair是谁的人一定不会阅读到这部分教程(～￣▽￣)～）
 
@@ -3148,7 +3148,7 @@ ArmorMaterial的构造方法共有四个参数：
 
 下面是效果示例图：
 
-![fall_protection](resources/fall_protection.png)
+![fall_protection](fall_protection.png)
 
 ## 2.4.1 热键绑定
 
@@ -3229,7 +3229,7 @@ ArmorMaterial的构造方法共有四个参数：
 
 打开游戏，进入控制设置，我们就可以看到我们注册到的`KeyBinding`了：
 
-![key_binding](resources/key_binding.png)
+![key_binding](key_binding.png)
 
 ### 使绑定的热键产生作用
 
@@ -3333,7 +3333,7 @@ Minecraft提供了一个`Achievement`类，现在我们看一个这个`Achieveme
 
 下面这张图是一张Minecraft原版所有成就的坐标位置图，其中x和y均为零的位置，就是打开物品栏那个成就的位置：
 
-![achievement_analysis](resources/achievement_analysis.png)
+![achievement_analysis](achievement_analysis.png)
 
 `setSpecial`方法用于设置这个成就是一种特殊成就，在成就图上会有花边，获得成就时显示的文字也是紫色的。
 
@@ -3355,7 +3355,7 @@ Minecraft提供了一个`Achievement`类，现在我们看一个这个`Achieveme
 
 打开游戏，就可以在成就图上看到对应的成就了：
 
-![achievement_example](resources/achievement_example.png)
+![achievement_example](achievement_example.png)
 
 ### 新的成就页
 
