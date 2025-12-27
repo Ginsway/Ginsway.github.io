@@ -6,7 +6,11 @@ author: Yanbing Zhao
 sticky: 99
 ---
   
-**[原文链接](https://fmltutor.ustc-zzzz.net/)**
+{% note success %}
+本文转载自：ustc-zzzz《Minecraft 1.8.9 FML Mod 开发教程》  
+原文： <https://fmltutor.ustc-zzzz.net/> 
+源码： <https://github.com/ustc-zzzz/fmltutor/>  
+{% endnote %}
 
 # 0 绪论
 
