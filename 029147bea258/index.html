@@ -28,33 +28,33 @@
 <meta property="og:site_name" content="Ginsway的小站">
 <meta property="og:description" content="本文转载自：ustc-zzzz《Minecraft 1.8.9 FML Mod 开发教程》原文： https:&#x2F;&#x2F;fmltutor.ustc-zzzz.net&#x2F;源码： https:&#x2F;&#x2F;github.com&#x2F;ustc-zzzz&#x2F;fmltutor&#x2F;               0 绪论FML与Forge的由来在很久很久以前（一个可以追溯到Minecraft刚刚发布的年代），人">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ginsway.github.io/golden_egg.png">
-<meta property="og:image" content="https://ginsway.github.io/grass_block.png">
-<meta property="og:image" content="https://ginsway.github.io/tab_fmltutor.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/golden_egg.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/grass_block.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/tab_fmltutor.png">
 <meta property="og:image" content="https://ginsway.github.io/tutorial-ustc-zzzz/tab_fmltutor_analysis.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_pickaxe.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_apple.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_helmet.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_chestplate.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_leggings.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_boots.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/armor_texture_analysis.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/armor_texture.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_layer_1.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/redstone_layer_2.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/fire_burn.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/inventory_potion_analysis.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/gui_potion.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/fall_protection.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/key_binding.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/achievement_analysis.png">
-<meta property="og:image" content="https://ginsway.github.io/resources/achievement_example.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_pickaxe.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_apple.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_helmet.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_chestplate.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_leggings.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_boots.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/armor_texture_analysis.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/armor_texture.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_layer_1.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/redstone_layer_2.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/fire_burn.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/inventory_potion_analysis.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/gui_potion.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/fall_protection.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/key_binding.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/achievement_analysis.png">
+<meta property="og:image" content="https://ginsway.github.io/029147bea258/achievement_example.png">
 <meta property="article:published_time" content="2020-11-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-27T05:43:02.186Z">
+<meta property="article:modified_time" content="2025-12-27T06:25:19.869Z">
 <meta property="article:author" content="Ginsway">
 <meta property="article:tag" content="tutorial">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ginsway.github.io/golden_egg.png">
+<meta name="twitter:image" content="https://ginsway.github.io/029147bea258/golden_egg.png">
   
   
   
@@ -802,7 +802,7 @@ archivesBaseName &#x3D; &quot;fmltutor&quot;<span aria-hidden="true" class="line
 
 <p>这一部分告诉我们的是这个物品材质的位置，也就是<code>fmltutor:items/golden_egg</code>，很明显，我们需要建立一个材质文件。这里使用的是16x16的材质文件（当然Minecraft也支持尺寸更大如32x32的材质文件，不过建议还是使用16x16的），新建文件夹<code>src/main/resources/assets/fmltutor/textures/items</code>，把制作完成的golden_egg.png放入（其实是我照着鸡蛋的原图嗐改的&#x3D;_&#x3D;||）：</p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/golden_egg.png:</code></strong></p>
-<p><img src="/golden_egg.png" srcset="/img/loading.gif" lazyload alt="golden_egg"></p>
+<p><img src="/029147bea258/golden_egg.png" srcset="/img/loading.gif" lazyload alt="golden_egg"></p>
 <p>所有模型和材质都准备好了，现在需要做的，就是<strong>让Minecraft知道你准备的模型和材质</strong>了。</p>
 <p>修改<code>ItemLoader</code>类的内容：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemLoader.java:</code></strong></p>
@@ -1056,7 +1056,7 @@ archivesBaseName &#x3D; &quot;fmltutor&quot;<span aria-hidden="true" class="line
 <p>细心的读者可能发现，下面的文件中出现了一个名为<code>parent</code>的字段，表示的含义似乎是继承了上面的文件，本部分的稍后面我们会讲为何要这么做。</p>
 <p>然后我们新建文件夹<code>src/main/resources/assets/fmltutor/textures/blocks</code>，在其中创建尺寸同样为16x16的图片文件<code>grass_block.png</code>（其实也仅仅是干草堆调了个色&#x3D;_&#x3D;||）：</p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/blocks/grass_block.png:</code></strong></p>
-<p><img src="/grass_block.png" srcset="/img/loading.gif" lazyload alt="grass_block"></p>
+<p><img src="/029147bea258/grass_block.png" srcset="/img/loading.gif" lazyload alt="grass_block"></p>
 <p>对<code>ItemRenderLoader</code>的修改：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/client/ItemRenderLoader.java:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>ustc_zzzz<span class="token punctuation">.</span>fmltutor<span class="token punctuation">.</span>client</span><span class="token punctuation">;</span>
@@ -1205,7 +1205,7 @@ archivesBaseName &#x3D; &quot;fmltutor&quot;<span aria-hidden="true" class="line
 
 <p>然后我们需要新建文件夹<code>assets/minecraft/textures/gui/container/creative_inventory</code>（<strong>注意这里的名称是<code>minecraft</code>不是Mod id</strong>），然后建立一个以<code>tab_</code>开头的PNG文件，名字由刚刚设置的字符串决定，这里就是<code>tab_fmltutor.png</code>，注意，这里的图片尺寸大小需要是256x256，其他的尺寸大小会出问题，需要设置的背景放置在左上角，其他的位置设置成透明就可以了：</p>
 <p><strong><code>src/main/resources/assets/minecraft/textures/gui/container/creative_inventory/tab_fmltutor.png</code></strong></p>
-<p><img src="/tab_fmltutor.png" srcset="/img/loading.gif" lazyload alt="tab_fmltutor"></p>
+<p><img src="/029147bea258/tab_fmltutor.png" srcset="/img/loading.gif" lazyload alt="tab_fmltutor"></p>
 <p>现在我们就可以看到由于作者的艺术细胞极度缺乏而导致的金光闪闪熠熠生辉的创造模式物品栏了：</p>
 <p><img src="/./tutorial-ustc-zzzz/tab_fmltutor_analysis.png" srcset="/img/loading.gif" lazyload alt="tab_fmltutor_analysis"></p>
 <h2 id="1-6-第一份合成表、烧炼规则和燃料"><a href="#1-6-第一份合成表、烧炼规则和燃料" class="headerlink" title="1.6 第一份合成表、烧炼规则和燃料"></a>1.6 第一份合成表、烧炼规则和燃料</h2><h3 id="第一份合成表"><a href="#第一份合成表" class="headerlink" title="第一份合成表"></a>第一份合成表</h3><p>新建包<code>com.github.ustc_zzzz.fmltutor.crafting</code>，并新建文件<code>CraftingLoader.java</code>：</p>
@@ -1697,7 +1697,7 @@ general &#123;
 
 <p>和对应的材质（然而大家可以明显地看出这只是钻石镐的调色&#x3D;_&#x3D;||）：</p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/redstone_pickaxe.png:</code></strong></p>
-<p><img src="/resources/redstone_pickaxe.png" srcset="/img/loading.gif" lazyload alt="redstone_pickaxe"></p>
+<p><img src="/029147bea258/redstone_pickaxe.png" srcset="/img/loading.gif" lazyload alt="redstone_pickaxe"></p>
 <h3 id="一些例行公事"><a href="#一些例行公事" class="headerlink" title="一些例行公事"></a>一些例行公事</h3><p>语言文件和在<code>GameRegistry</code>中注册（这里需要稍微注意一下的可能是<code>ToolMaterial</code>和物品的先后注册顺序）：</p>
 <p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-lang" data-language="lang"><code class="language-lang">item.redstonePickaxe.name&#x3D;Redstone Pickaxe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
@@ -1871,7 +1871,7 @@ general &#123;
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/redstone_apple.png:</code></strong></p>
-<p><img src="/resources/redstone_apple.png" srcset="/img/loading.gif" lazyload alt="redstone_apple"></p>
+<p><img src="/029147bea258/redstone_apple.png" srcset="/img/loading.gif" lazyload alt="redstone_apple"></p>
 <p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-lang" data-language="lang"><code class="language-lang">item.redstoneApple.name&#x3D;Redstone Apple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
@@ -2119,13 +2119,13 @@ item.redstoneBoots.name&#x3D;红石靴子<span aria-hidden="true" class="line-nu
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/redstone_helmet.png:</code></strong></p>
-<p><img src="/resources/redstone_helmet.png" srcset="/img/loading.gif" lazyload alt="redstone_helmet"></p>
+<p><img src="/029147bea258/redstone_helmet.png" srcset="/img/loading.gif" lazyload alt="redstone_helmet"></p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/redstone_chestplate.png:</code></strong></p>
-<p><img src="/resources/redstone_chestplate.png" srcset="/img/loading.gif" lazyload alt="redstone_chestplate"></p>
+<p><img src="/029147bea258/redstone_chestplate.png" srcset="/img/loading.gif" lazyload alt="redstone_chestplate"></p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/redstone_leggings.png:</code></strong></p>
-<p><img src="/resources/redstone_leggings.png" srcset="/img/loading.gif" lazyload alt="redstone_leggings"></p>
+<p><img src="/029147bea258/redstone_leggings.png" srcset="/img/loading.gif" lazyload alt="redstone_leggings"></p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/items/redstone_boots.png:</code></strong></p>
-<p><img src="/resources/redstone_boots.png" srcset="/img/loading.gif" lazyload alt="redstone_boots"></p>
+<p><img src="/029147bea258/redstone_boots.png" srcset="/img/loading.gif" lazyload alt="redstone_boots"></p>
 <p>注册：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/item/ItemLoader.java（部分）:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ItemArmor</span> redstoneHelmet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ItemRedstoneArmor<span class="token punctuation">.</span>Helmet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2183,7 +2183,7 @@ item.redstoneBoots.name&#x3D;红石靴子<span aria-hidden="true" class="line-nu
 <p>例如，钻石的<code>name</code>参数为<code>diamond</code>，其两张图片的位置就是<code>textures/models/armor/diamond_layer_1.png</code>和<code>textures/models/armor/diamond_layer_2.png</code>。</p>
 <p>这里我们的ArmorMaterial的<code>name</code>参数为<code>fmltutor:redstone</code>，其两张图片的位置就是<code>fmltutor:textures/models/armor/redstone_layer_1.png</code>和<code>fmltutor:textures/models/armor/redstone_layer_2.png</code>了。我们在那里新建文件夹，把我们想要的两张图放进去就可以了。</p>
 <p>现在打开原版的材质图，我们可以注意到一团乱糟糟的外观碎片被放到了一起。实际上，这些碎片的摆放位置都是有规律的：</p>
-<p><img src="/resources/armor_texture_analysis.png" srcset="/img/loading.gif" lazyload alt="armor_texture_analysis"></p>
+<p><img src="/029147bea258/armor_texture_analysis.png" srcset="/img/loading.gif" lazyload alt="armor_texture_analysis"></p>
 <p>（材质分区图，其中F表示前面，B表示后面，L表示左面。R表示右面，U表示顶面，D表示底面，紫色背景表示尺寸，每格大小为7x7，边框尺寸为1）</p>
 <p>我们注意到，这一张材质图被分成了五个大部分，每一个部分都有不同的尺寸。它们分别为头（Head，8x8x8），头饰（Headwear，8x8x8），下肢（RightLeg&#x2F;LeftLeg，4x12x4），身体（Body，8x12x4），和上肢（RightArm&#x2F;LeftArm，4x12x4）。每一个部分分成了六个小部分，表示六个面。</p>
 <p>那。。。为什么是两张图呢？</p>
@@ -2196,12 +2196,12 @@ item.redstoneBoots.name&#x3D;红石靴子<span aria-hidden="true" class="line-nu
 <li>当玩家穿戴上靴子，游戏渲染第一张图的RightLeg&#x2F;LeftLeg部分。</li>
 </ul>
 <p>这里准备了一张已经划分好不同部分的，大小为64x32的图，以方便读者设计盔甲。读者可以下载然后修改：</p>
-<p><img src="/resources/armor_texture.png" srcset="/img/loading.gif" lazyload alt="armor_texture"></p>
+<p><img src="/029147bea258/armor_texture.png" srcset="/img/loading.gif" lazyload alt="armor_texture"></p>
 <p>我们这里使用这样的两张图（没错。。。调色。。。）：</p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/models/armor/redstone_layer_1.png:</code></strong></p>
-<p><img src="/resources/redstone_layer_1.png" srcset="/img/loading.gif" lazyload alt="redstone_layer_1"></p>
+<p><img src="/029147bea258/redstone_layer_1.png" srcset="/img/loading.gif" lazyload alt="redstone_layer_1"></p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/models/armor/redstone_layer_2.png:</code></strong></p>
-<p><img src="/resources/redstone_layer_2.png" srcset="/img/loading.gif" lazyload alt="redstone_layer_2"></p>
+<p><img src="/029147bea258/redstone_layer_2.png" srcset="/img/loading.gif" lazyload alt="redstone_layer_2"></p>
 <p>打开游戏试试吧～</p>
 <h2 id="2-3-1-新的伤害类型"><a href="#2-3-1-新的伤害类型" class="headerlink" title="2.3.1 新的伤害类型"></a>2.3.1 新的伤害类型</h2><h3 id="DamageSource"><a href="#DamageSource" class="headerlink" title="DamageSource"></a>DamageSource</h3><p>原版提供了一个<code>DamageSource</code>类，并且预置了一些常用的<code>DamageSource</code>：</p>
 <ul>
@@ -2428,7 +2428,7 @@ death.attack.wither&#x3D;%1$s 凋零了
 <p>这里对该种附魔进行注册，如果ID重复，则输出错误信息。</p>
 <p><code>addToBookList</code>方法使得该附魔被注册，使其在附魔台上可以被注册到，在创造模式物品栏上也可以找到对应的附魔书。</p>
 <p>下面是一张拥有此种附魔的钻石镐示例：</p>
-<p><img src="/resources/fire_burn.png" srcset="/img/loading.gif" lazyload alt="fire_burn"></p>
+<p><img src="/029147bea258/fire_burn.png" srcset="/img/loading.gif" lazyload alt="fire_burn"></p>
 <h3 id="完善你的附魔"><a href="#完善你的附魔" class="headerlink" title="完善你的附魔"></a>完善你的附魔</h3><p>为了使我们的附魔可以产生作用，我们需要在特定的地方监听事件，以使这个附魔产生作用：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><div class="caption"><span>EventLoader.java</span></div><code class="language-java"><span class="token annotation punctuation">@SubscribeEvent</span>
@@ -2526,7 +2526,7 @@ death.attack.wither&#x3D;%1$s 凋零了
 <li>第三个参数表示这个附魔的粒子效果（螺旋）颜色，这里定为深红色</li>
 </ul>
 <p><code>setIconIndex</code>方法表示这个药水效果在显示的时候使用的图标在下面这张图（来自<code>assets.minecraft.textures.gui.container.inventory.png</code>）中的位置，两个参数表示x和y坐标，这里设置为和速度药水效果的图标一致：</p>
-<p><img src="/resources/inventory_potion_analysis.png" srcset="/img/loading.gif" lazyload alt="inventory_potion_analysis"></p>
+<p><img src="/029147bea258/inventory_potion_analysis.png" srcset="/img/loading.gif" lazyload alt="inventory_potion_analysis"></p>
 <p><code>setPotionName</code>方法和附魔的<code>setName</code>方法，以及方块、物品等的<code>setUnlocalizedName</code>方法类似，我们修改一下语言文件：</p>
 <p><strong><code>src/main/resources/assets/fmltutor/lang/en_US.lang（部分）:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-lang" data-language="lang"><code class="language-lang">potion.fallProtection&#x3D;Fall Protection<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
@@ -2606,7 +2606,7 @@ death.attack.wither&#x3D;%1$s 凋零了
 <p>我们这里覆写的就是<code>renderInventoryEffect</code>方法，这个方法是当该药水效果的图标绘制时调用的。</p>
 <p>除此之外，我们还要提供一个大小为256x256（其它尺寸是不可行的，只能256x256）的图片，并在左上角放上对应的18x18图标（这里终于是原创的了^_^）。</p>
 <p><strong><code>src/main/resources/assets/fmltutor/textures/gui/potion.png:</code></strong></p>
-<p><img src="/resources/gui_potion.png" srcset="/img/loading.gif" lazyload alt="gui_potion"></p>
+<p><img src="/029147bea258/gui_potion.png" srcset="/img/loading.gif" lazyload alt="gui_potion"></p>
 <p>（轻点打我。。。这个想法是一个叫作Blair的同学提供的，也为了纪念本部分的章节号23333333）<br>（我相信知道Blair是谁的人一定不会阅读到这部分教程(～￣▽￣)～）</p>
 <p>现在，我们分析一下这个方法：</p>
 <ul>
@@ -2624,7 +2624,7 @@ death.attack.wither&#x3D;%1$s 凋零了
 </ul>
 <p>现在打开游戏，是不是看到自定义的药水效果图标了呢～</p>
 <p>下面是效果示例图：</p>
-<p><img src="/resources/fall_protection.png" srcset="/img/loading.gif" lazyload alt="fall_protection"></p>
+<p><img src="/029147bea258/fall_protection.png" srcset="/img/loading.gif" lazyload alt="fall_protection"></p>
 <h2 id="2-4-1-热键绑定"><a href="#2-4-1-热键绑定" class="headerlink" title="2.4.1 热键绑定"></a>2.4.1 热键绑定</h2><h3 id="概述-5"><a href="#概述-5" class="headerlink" title="概述"></a>概述</h3><p>这一部分，作者将带领大家完成热键绑定的操作。在操作前，读者需要记住一点：<strong>所有和热键绑定相关的操作都只在客户端执行。</strong></p>
 <h3 id="KeyBinding"><a href="#KeyBinding" class="headerlink" title="KeyBinding"></a>KeyBinding</h3><p>我们在包<code>com.github.ustc_zzzz.fmltutor.client</code>下新建一个文件<code>KeyLoader.java</code>：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/client/KeyLoader.java:</code></strong></p>
@@ -2677,7 +2677,7 @@ key.categories.fmltutor&#x3D;FML教程<span aria-hidden="true" class="line-numbe
 
 <p>然后我们使用<code>ClientRegistry</code>的<code>registerKeyBinding</code>方法注册。</p>
 <p>打开游戏，进入控制设置，我们就可以看到我们注册到的<code>KeyBinding</code>了：</p>
-<p><img src="/resources/key_binding.png" srcset="/img/loading.gif" lazyload alt="key_binding"></p>
+<p><img src="/029147bea258/key_binding.png" srcset="/img/loading.gif" lazyload alt="key_binding"></p>
 <h3 id="使绑定的热键产生作用"><a href="#使绑定的热键产生作用" class="headerlink" title="使绑定的热键产生作用"></a>使绑定的热键产生作用</h3><p>我们在注册的事件中加入监听按键按下的事件：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SideOnly</span><span class="token punctuation">(</span><span class="token class-name">Side</span><span class="token punctuation">.</span><span class="token constant">CLIENT</span><span class="token punctuation">)</span>
@@ -2742,7 +2742,7 @@ achievement.fmltutor.worseThanPig.desc&#x3D;Die from inappropriate food for the 
 <p> achievement.fmltutor.worseThanPig&#x3D;人不如猪<br> achievement.fmltutor.worseThanPig.desc&#x3D;因为提供给猪错误的饲料而死</p>
 <p>含<code>desc</code>部分的行表示成就的显示描述，不含<code>desc</code>部分的行表示这个成就的显示名称。</p>
 <p>下面这张图是一张Minecraft原版所有成就的坐标位置图，其中x和y均为零的位置，就是打开物品栏那个成就的位置：</p>
-<p><img src="/resources/achievement_analysis.png" srcset="/img/loading.gif" lazyload alt="achievement_analysis"></p>
+<p><img src="/029147bea258/achievement_analysis.png" srcset="/img/loading.gif" lazyload alt="achievement_analysis"></p>
 <p><code>setSpecial</code>方法用于设置这个成就是一种特殊成就，在成就图上会有花边，获得成就时显示的文字也是紫色的。</p>
 <p>然后，我们通过对这个<code>Achievement</code>类的实例调用<code>registerStat</code>方法注册这个成就。</p>
 <p>最后我们在<code>CommonProxy</code>完成注册：</p>
@@ -2756,7 +2756,7 @@ achievement.fmltutor.worseThanPig.desc&#x3D;Die from inappropriate food for the 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 <p>打开游戏，就可以在成就图上看到对应的成就了：</p>
-<p><img src="/resources/achievement_example.png" srcset="/img/loading.gif" lazyload alt="achievement_example"></p>
+<p><img src="/029147bea258/achievement_example.png" srcset="/img/loading.gif" lazyload alt="achievement_example"></p>
 <h3 id="新的成就页"><a href="#新的成就页" class="headerlink" title="新的成就页"></a>新的成就页</h3><p>Forge提供了一个名为<code>AchievementPage</code>的类，我们可以实例化这个类，并注册他们（这里新添加了两个成就）：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/achievement/AchievementLoader.java:</code></strong></p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>github<span class="token punctuation">.</span>ustc_zzzz<span class="token punctuation">.</span>fmltutor<span class="token punctuation">.</span>achievement</span><span class="token punctuation">;</span>
@@ -3114,9 +3114,9 @@ commands.position.success&#x3D;玩家 %1$s 处于名为 %3$s 的世界，其坐�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/3df3d04c59fe/" title="Fabric API 与 Quilted Fabric API / Quilt Standard Libraries 版本列表">
+                      <a href="/40db92df5e5f/" title="Forge 与 NeoForge 版本列表">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Fabric API 与 Quilted Fabric API / Quilt Standard Libraries 版本列表</span>
+                        <span class="hidden-mobile">Forge 与 NeoForge 版本列表</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
