@@ -21,12 +21,12 @@
   <meta name="author" content="Yanbing Zhao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="原文链接 0 绪论FML与Forge的由来在很久很久以前（一个可以追溯到Minecraft刚刚发布的年代），人们就开始为Minecraft制作和使用Mod了。那个时候，由于Mod的制作方式是直接通过底层对Minecraft修改，所以将两个Minecraft Mod进行整合几乎是一件不可能的事情。 随后，Minecraft MCP（Minecraft Mod Coder Pack）的诞生，让Mod的">
+    <meta name="description" content="本文转载自：ustc-zzzz《Minecraft 1.8.9 FML Mod 开发教程》原文： https:&#x2F;&#x2F;fmltutor.ustc-zzzz.net&#x2F;源码： https:&#x2F;&#x2F;github.com&#x2F;ustc-zzzz&#x2F;fmltutor&#x2F;               0 绪论FML与Forge的由来在很久很久以前（一个可以追溯到Minecraft刚刚发布的年代），人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Minecraft 1.8.9 FML Mod 开发教程">
 <meta property="og:url" content="https://ginsway.github.io/029147bea258/index.html">
 <meta property="og:site_name" content="Ginsway的小站">
-<meta property="og:description" content="原文链接 0 绪论FML与Forge的由来在很久很久以前（一个可以追溯到Minecraft刚刚发布的年代），人们就开始为Minecraft制作和使用Mod了。那个时候，由于Mod的制作方式是直接通过底层对Minecraft修改，所以将两个Minecraft Mod进行整合几乎是一件不可能的事情。 随后，Minecraft MCP（Minecraft Mod Coder Pack）的诞生，让Mod的">
+<meta property="og:description" content="本文转载自：ustc-zzzz《Minecraft 1.8.9 FML Mod 开发教程》原文： https:&#x2F;&#x2F;fmltutor.ustc-zzzz.net&#x2F;源码： https:&#x2F;&#x2F;github.com&#x2F;ustc-zzzz&#x2F;fmltutor&#x2F;               0 绪论FML与Forge的由来在很久很久以前（一个可以追溯到Minecraft刚刚发布的年代），人">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ginsway.github.io/golden_egg.png">
 <meta property="og:image" content="https://ginsway.github.io/grass_block.png">
@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://ginsway.github.io/resources/achievement_analysis.png">
 <meta property="og:image" content="https://ginsway.github.io/resources/achievement_example.png">
 <meta property="article:published_time" content="2020-11-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-14T03:59:18.088Z">
+<meta property="article:modified_time" content="2025-12-27T05:41:20.778Z">
 <meta property="article:author" content="Ginsway">
 <meta property="article:tag" content="tutorial">
 <meta name="twitter:card" content="summary_large_image">
@@ -302,7 +302,10 @@
             
               <div class="markdown-body">
                 
-                <p><strong><a target="_blank" rel="noopener" href="https://fmltutor.ustc-zzzz.net/">原文链接</a></strong></p>
+                <div class="note note-success">
+            <p>本文转载自：ustc-zzzz《Minecraft 1.8.9 FML Mod 开发教程》<br>原文： <a target="_blank" rel="noopener" href="https://fmltutor.ustc-zzzz.net/">https://fmltutor.ustc-zzzz.net/</a><br>源码： <a target="_blank" rel="noopener" href="https://github.com/ustc-zzzz/fmltutor/">https://github.com/ustc-zzzz/fmltutor/</a>  </p>
+          </div>
+
 <h1 id="0-绪论"><a href="#0-绪论" class="headerlink" title="0 绪论"></a>0 绪论</h1><h3 id="FML与Forge的由来"><a href="#FML与Forge的由来" class="headerlink" title="FML与Forge的由来"></a>FML与Forge的由来</h3><p>在很久很久以前（一个可以追溯到Minecraft刚刚发布的年代），人们就开始为Minecraft制作和使用Mod了。那个时候，由于Mod的制作方式是直接通过底层对Minecraft修改，所以将两个Minecraft Mod进行整合几乎是一件不可能的事情。</p>
 <p>随后，Minecraft MCP（Minecraft Mod Coder Pack）的诞生，让Mod的制作和整合变得容易。这是因为Minecraft被进行了混淆化，这件事使得原本好看好记的诸如Item这样的类名、方法名、变量名等，通通被混淆化成了alq这样难以阅读和辨认的符号。Minecraft MCP的意义，就是对其进行反混淆，把alq这样的类名用一个诸如Item的名称代替。这使得人们可以通过更改MCP提供的源代码来进行Mod制作。但是，若是想合并两个Mod，必须要把两个Mod的源代码<strong>一行一行</strong>地进行整合。</p>
 <p>直到2010年年底，一个叫作ModLoader的Mod横空出世，这使得Mod的开发方式产生了跨时代性的变化。ModLoader提供了一个框架和一套API，玩家通过这个框架可以很方便地管理Mod，开发者通过这一套API可以完成很多任务，如添加新方块、添加新物品，等等。</p>
@@ -1959,11 +1962,11 @@ general &#123;
 
 <p>和原版提供的五种材料的参数：</p>
 <ul>
-<li><code>LEATHER(&quot;leather&quot;, 5, new int[]{1, 3, 2, 1}, 15),</code></li>
-<li><code>CHAIN(&quot;chainmail&quot;, 15, new int[]{2, 5, 4, 1}, 12),</code></li>
-<li><code>IRON(&quot;iron&quot;, 15, new int[]{2, 6, 5, 2}, 9),</code></li>
-<li><code>GOLD(&quot;gold&quot;, 7, new int[]{2, 5, 3, 1}, 25),</code></li>
-<li><code>DIAMOND(&quot;diamond&quot;, 33, new int[]{3, 8, 6, 3}, 10);</code></li>
+<li><code>LEATHER(&quot;leather&quot;, 5, new int[]&#123;1, 3, 2, 1&#125;, 15),</code></li>
+<li><code>CHAIN(&quot;chainmail&quot;, 15, new int[]&#123;2, 5, 4, 1&#125;, 12),</code></li>
+<li><code>IRON(&quot;iron&quot;, 15, new int[]&#123;2, 6, 5, 2&#125;, 9),</code></li>
+<li><code>GOLD(&quot;gold&quot;, 7, new int[]&#123;2, 5, 3, 1&#125;, 25),</code></li>
+<li><code>DIAMOND(&quot;diamond&quot;, 33, new int[]&#123;3, 8, 6, 3&#125;, 10);</code></li>
 </ul>
 <p>ArmorMaterial的构造方法共有四个参数：</p>
 <ul>
@@ -2428,7 +2431,7 @@ death.attack.wither&#x3D;%1$s 凋零了
 <p><img src="/resources/fire_burn.png" srcset="/img/loading.gif" lazyload alt="fire_burn"></p>
 <h3 id="完善你的附魔"><a href="#完善你的附魔" class="headerlink" title="完善你的附魔"></a>完善你的附魔</h3><p>为了使我们的附魔可以产生作用，我们需要在特定的地方监听事件，以使这个附魔产生作用：</p>
 <p><strong><code>src/main/java/com/github/ustc_zzzz/fmltutor/common/EventLoader.java（部分）:</code></strong></p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SubscribeEvent</span>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><div class="caption"><span>EventLoader.java</span></div><code class="language-java"><span class="token annotation punctuation">@SubscribeEvent</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onBlockHarvestDrops</span><span class="token punctuation">(</span><span class="token class-name">BlockEvent<span class="token punctuation">.</span>HarvestDropsEvent</span> event<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>world<span class="token punctuation">.</span>isRemote <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>harvester <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
@@ -3111,9 +3114,9 @@ commands.position.success&#x3D;玩家 %1$s 处于名为 %3$s 的世界，其坐�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/40db92df5e5f/" title="Forge 与 NeoForge 版本列表">
+                      <a href="/3df3d04c59fe/" title="Fabric API 与 Quilted Fabric API / Quilt Standard Libraries 版本列表">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Forge 与 NeoForge 版本列表</span>
+                        <span class="hidden-mobile">Fabric API 与 Quilted Fabric API / Quilt Standard Libraries 版本列表</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
