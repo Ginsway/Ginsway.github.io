@@ -18,11 +18,11 @@
 
 # 用于浏览器标签的图标
 # Icon for browser tab
-favicon: /img/gin2025.sm.png.png
+favicon: img/logo.png
 
 # 用于苹果设备的图标
 # Icon for Apple touch
-apple_touch_icon: /img/gin2025.sm.png.png
+apple_touch_icon: img/logo.png
 
 # 浏览器标签页中的标题分隔符，效果： 文章名 - 站点名
 # Title separator in browser tab, eg: article - site
@@ -1091,3 +1091,5 @@ static_prefix:
   twikoo: https://lib.baomitu.com/twikoo/1.6.8/
 
   hint: https://lib.baomitu.com/hint.css/2.7.0/
+
+# custom_head: <link rel="icon" type="image/png" href="/img/icon.png">
