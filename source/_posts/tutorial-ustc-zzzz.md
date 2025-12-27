@@ -3763,6 +3763,269 @@ Forge提供了一个名为`AchievementPage`的类，我们可以实例化这个�
 
 ## 2.5.1 在世界生成矿物
 
+### 概述
+
+有的时候，一个Mod中，为原版的世界添加新的世界生成是少不了的。然而作为一个Minecraft玩家，往往会在初期花费大量时间来进行挖矿的活动。因此，一个Mod的世界生成，往往最主要的就是在地下矿物的生成。Forge提供了相关的矿物生成事件，通过对相关事件的监听，我们就可以让Minecraft在适当时机，和我们想要的地点进行矿物生成，甚至修改原版的矿物。本部分将以在地下以生成矿物的形式生成萤石，及取消世界中安山岩的生成为例，带领读者一步一步、按部就班地完成对世界上矿物的修改和调整。
+
+但是这里，作者想要提醒读者一句：**如果不是探险类Mod，一个好的Mod，除了一些必要的矿物生成，真正世界生成的部分是很少的**。换句话说，一个好的Mod，如果不具备很强烈的探险性质，应该**尽量减少世界生成部分**，可以换一些方式，比如使用方块破坏掉落、生物破坏掉落、等等，以实现新的物品、方块等的产生。当然，一个主打冒险的Mod，或者一些大量添加了冒险元素的魔法性质的Mod，等等，涉及到了其他世界生成，这些内容比较复杂，会在高级部分进行讲解。
+
+### 修改矿物生成
+
+前面的部分已经提到过了，Forge的所有矿物生成相关事件，都需要在`MinecraftForge.ORE_GEN_BUS`上注册，这些事件都有一个共同的名为`OreGenEvent`的基类。Forge为这个类提供了三个子类，用于在不同矿物的生成阶段注入相关的代码：
+
+* `OreGenEvent.Pre`在**主世界**的矿物即将开始生成时触发
+* `OreGenEvent.Post`在**主世界**的矿物生成结束（绿宝石除外）时触发
+* `OreGenEvent.GenerateMinable`在所有世界的相关矿物的一种即将开始生成时触发
+
+注意一点，上面的三个事件都是基于**区块**的，也就是说，每次生成是以区块为单位进行的，生成的时候会在该区块生成相应数量的矿物堆。
+
+关于`OreGenEvent.GenerateMinable`，其中有一个`type`字段指示生成的矿物是什么类型的。这里需要注意的是，只要是在地下替换石头的行为都会被认作是矿物，所以这里生成的矿物并不是我们一般意义上的矿物，还包括泥土、沙砾等。作为示例，我们监听这个事件，并检查生成的是不是安山岩，如果是，则取消生成。
+
+在包`com.github.ustc_zzzz.fmltutor.worldgen`下新建文件`WorldGeneratorLoader.java`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/worldgen/WorldGeneratorLoader.java:`**
+
+```java
+package com.github.ustc_zzzz.fmltutor.worldgen;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.OreGenEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+public class WorldGeneratorLoader
+{
+    public WorldGeneratorLoader()
+    {
+        MinecraftForge.ORE_GEN_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onOreGenGenerateMinable(OreGenEvent.GenerateMinable event)
+    {
+        if (event.type == OreGenEvent.GenerateMinable.EventType.ANDESITE)
+        {
+            event.setResult(Event.Result.DENY);
+        }
+    }
+}
+```
+
+很好，我们监听了`OreGenEvent.GenerateMinable`事件，并在其的`type`字段为`ANDESITE`时调用`setResult`方法并传入`Event.Result.DENY`参数。因为`OreGenEvent.GenerateMinable`事件拥有`@HasResult`注解，所以将其设置为`Event.Result.DENY`便可以阻止相应矿物的生成，设置为其他代表继续允许矿物生成。
+
+现在打开一个新的世界，你大概看不到天然生成的安山岩存在了。
+
+### 添加矿物生成
+
+如果我们仔细研究生成矿物的代码的话，我们会注意到相关的类都继承了`WorldGenerater`类。这个类是个抽象类，只剩下一个方法没有实现，我们看看这个方法的声明：
+
+```java
+    public abstract boolean generate(World worldIn, Random rand, BlockPos position);
+```
+
+* 这个方法的第一个参数代表当前待生成的世界
+* 这个方法的第三个参数代表当前待生成的区块，一般而言，传入该方法的该参数，其**Y坐标永远为0，X坐标和Z坐标代表该区块的西北方向，也就是X坐标和Z坐标最小的地方，同时X坐标和Z坐标都是16的倍数**
+* 这个方法的返回值代表该生成是否成功，如果不成功游戏可能会试图重新调用这个方法生成一次，这里我们让它永远为`true`
+
+现在我们再来说说这个方法的第二个参数。第二个参数是一个和**当前世界种子**、**当前区块的x坐标（第二个参数）**、和**当前区块的z坐标（第三个参数）**相关的随机数发生器，换言之，如果当前即将生成的是同一个世界种子和同一个区块，这个随机数发生器总会是一致的。所以，为了保证相同的种子生成相同的世界，请**在世界生成的时候只使用这个随机数发生器**。
+
+我们新建包`com.github.ustc_zzzz.fmltutor.worldgen`，并在其中新建文件`WorldGeneratorGlowstone.java`：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/worldgen/WorldGeneratorGlowstone.java:`**
+
+```java
+package com.github.ustc_zzzz.fmltutor.worldgen;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
+
+import java.util.Random;
+
+public class WorldGeneratorGlowstone extends WorldGenerator
+{
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        // TODO
+        return true;
+    }
+}
+```
+
+然后我们修改`WorldGeneratorLoader`类，这里作为示例，我们让萤石的生成在所有矿物生成之后，所以我们使其监听`OreGenEvent.Post`事件：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/worldgen/WorldGeneratorLoader.java:`**
+
+```java
+package com.github.ustc_zzzz.fmltutor.worldgen;
+
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.OreGenEvent;
+import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+public class WorldGeneratorLoader
+{
+    private static WorldGenerator generatorGlowstone = new WorldGeneratorGlowstone();
+
+    private BlockPos pos;
+
+    public WorldGeneratorLoader()
+    {
+        MinecraftForge.ORE_GEN_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onOreGenPost(OreGenEvent.Post event)
+    {
+        if (!event.pos.equals(this.pos))
+        {
+            this.pos = event.pos;
+            generatorGlowstone.generate(event.world, event.rand, event.pos);
+        }
+    }
+
+    @SubscribeEvent
+    public void onOreGenGenerateMinable(OreGenEvent.GenerateMinable event)
+    {
+        if (event.type == OreGenEvent.GenerateMinable.EventType.ANDESITE)
+        {
+            event.setResult(Event.Result.DENY);
+        }
+    }
+}
+```
+
+`OreGenEvent`类正好提供了三个参数用于传入`generate`方法作为其三个参数，我们直接拿过来用就可以了。
+
+这里有一点需要说明，`OreGenEvent.Pre`和`OreGenEvent.Post`会在山地地形对应的区块分别调用两次，原因是原版游戏中生成绿宝石等山地特有矿物的阶段和生成其他普通矿物的阶段是分离的，所以会分别调用两次，我们把调用的方块坐标位置记录下来以避免第二次调用的发生。
+
+刚刚说到，`OreGenEvent.Post`类只会作用于主世界，如果读者想要添加下界的世界生成，可以监听生成石英矿的事件。
+
+现在我们开始考虑填充`generate`方法，也就是具体的生成过程。
+
+其实，Minecraft的生成矿物的方式一点都不容易，比如说生成矿物的时候要保证矿物块的大小相近，被替换成矿物的方块不能是基岩这种方块，也不能是空气。不过幸运的是，Minecraft已经给我们完成了一部分，那就是`WorldGenMinable`类。这个类可以满足生成一般矿物的要求了。
+
+这里先贴上教程作为演示的代码：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/worldgen/WorldGeneratorGlowstone.java（部分）:`**
+
+```java
+    private final WorldGenerator glowstoneGenerator = new WorldGenMinable(Blocks.glowstone.getDefaultState(), 16);
+
+    @Override
+    public boolean generate(World world, Random rand, BlockPos pos)
+    {
+        if (TerrainGen.generateOre(world, rand, this, pos, OreGenEvent.GenerateMinable.EventType.CUSTOM))
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                int posX = pos.getX() + rand.nextInt(16);
+                int posY = 16 + rand.nextInt(16);
+                int posZ = pos.getZ() + rand.nextInt(16);
+                BlockPos blockpos = new BlockPos(posX, posY, posZ);
+                BiomeGenBase biomeGenBase = world.getBiomeGenForCoords(blockpos);
+                if (biomeGenBase.getIntRainfall() < rand.nextInt(65536))
+                {
+                    glowstoneGenerator.generate(world, rand, blockpos);
+                }
+            }
+        }
+        return true;
+    }
+```
+
+`WorldGenMinable`类的一个常用构造方法一共需要两个参数：
+
+```
+public WorldGenMinable(IBlockState p_i45630_1_, int p_i45630_2_) {...}
+```
+
+* 第一个参数表示生成的矿物的方块状态，方块状态的相关内容在高级部分会有所讲解，这里只需要知道通过方块的`getDefaultState`方法获取这个方块状态就可以了。比如这里我们需要生成萤石，我们就可以通过`Blocks.glowstone.getDefaultState()`的方式获取到这个方块状态
+* 第二个参数表示生成的矿物的大小，当然实际大小是会有出入的，这里我们定为16
+
+我们先实例化一个`WorldGenMinable`：
+
+```java
+    private final WorldGenMinable glowstoneGenerator = new WorldGenMinable(Blocks.glowstone.getDefaultState(), 16);
+```
+
+然后我们来看`generate`方法的第一句：
+
+```java
+        if (TerrainGen.generateOre(world, rand, this, pos, OreGenEvent.GenerateMinable.EventType.CUSTOM))
+```
+
+这个条件判断语句其实可以不存在，不过为什么我们要加上去呢？因为为了方便Mod间的相互协作，我们向Forge触发了`OreGenEvent.GenerateMinable`事件，这样如果有Mod想要阻止萤石的生成，直接监听和原版类似的事件就可以了。与人方便，自己方便。
+
+```java
+            for (int i = 0; i < 4; ++i)
+            {
+                int posX = pos.getX() + rand.nextInt(16);
+                int posY = 16 + rand.nextInt(16);
+                int posZ = pos.getZ() + rand.nextInt(16);
+                BlockPos blockpos = new BlockPos(posX, posY, posZ);
+                BiomeGenBase biomeGenBase = world.getBiomeGenForCoords(blockpos);
+                if (biomeGenBase.getIntRainfall() < rand.nextInt(65536))
+                {
+                    glowstoneGenerator.generate(world, rand, blockpos);
+                }
+            }
+```
+
+一般情况下一个区块不会只生成一次矿物，比如这里我们通过循环四次的方式在当前区块进行四次矿物生成。
+
+```java
+                int posX = pos.getX() + rand.nextInt(16);
+                int posY = 16 + rand.nextInt(16);
+                int posZ = pos.getZ() + rand.nextInt(16);
+                BlockPos blockpos = new BlockPos(posX, posY, posZ);
+```
+
+然后我们随机在当前区块内生成XYZ三个坐标值，当然这里我们需要使用Forge提供的随机数生成器，不难看出，这里我们设定萤石的生成范围是Y坐标（也就是纵坐标）从16到32，X坐标和Z坐标也没有超出一个区块的范围。
+
+```java
+                BiomeGenBase biomeGenBase = world.getBiomeGenForCoords(blockpos);
+```
+
+有的时候，在世界上生成的矿物，还需要依赖于生物群系，比如绿宝石的生成就和生物群系密切相关，这里我们使用`World`类的`getBiomeGenForCoords`方法获取这个方块所在位置所在的生物群系。
+
+```java
+                if (biomeGenBase.getIntRainfall() < rand.nextInt(65536))
+```
+
+这里教程作为演示，对于生物群系的特殊设定是获取生物群系的降雨量（在0到65536之间），如果生物群系的降雨量如果较大（比如雨林），则该次生成成功的概率偏小，如果偏小（比如沙漠），则该次生成成功的概率偏大。
+
+最后我们通过调用我们用于生成萤石的`WorldGenMinable`的`generate`方法，并传入相应的三个参数生成这个矿物：
+
+```java
+                    glowstoneGenerator.generate(world, rand, blockpos);
+```
+
+到这里，一个用于生成矿物的世界生成器就制作完成了。
+
+最后少不了的在`CommonProxy`中注册：
+
+**`src/main/java/com/github/ustc_zzzz/fmltutor/common/CommonProxy.java（部分）:`**
+
+```
+    public void init(FMLInitializationEvent event)
+    {
+        new CraftingLoader();
+        new EnchantmentLoader();
+        new AchievementLoader();
+        new EventLoader();
+        new WorldGeneratorLoader();
+    }
+```
+
+打开游戏，新建一个世界，或者跑到之前还未有生成过的世界部分，去深入地下看看吧～
+
+已有生成的世界部分，自然已经不会再生成矿物了。
 ## 2.5.2 注册和使用矿物字典
 
 ## 2.6.1 创建并注册一份流体
