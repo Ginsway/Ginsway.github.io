@@ -5,10 +5,23 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/0cbdb6301214/"/>
-    <url>/0cbdb6301214/</url>
+    <link href="/a5ec3dfc299c/"/>
+    <url>/a5ec3dfc299c/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>画O小技巧</title>
+    <link href="/658a619cf21b/"/>
+    <url>/658a619cf21b/</url>
+    
+    <content type="html"><![CDATA[<ul><li>苹果地图（<a href="https://maps.apple.com/frame?map=satellite">https://maps.apple.com/frame?map=satellite</a>）清晰度和时效都相当可观，可以一试</li><li><a href="https://github.com/Zkir/UrbanEye3D">UrbanEye3D</a> 可以在JOSM中查看3D建筑</li></ul>]]></content>
     
     
     
@@ -21,7 +34,7 @@
     <link href="/58f112a5bc68/"/>
     <url>/58f112a5bc68/</url>
     
-    <content type="html"><![CDATA[<p>假设主手行为一定比副手优先级高</p><ul><li><input disabled="" type="checkbox"> 在副手火把，主手背包时，放出的是火把</li><li><input disabled="" type="checkbox"> 在副手火把，主手开掘铲时，两者行为同时进行</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>假设主手行为一定比副手优先级高</p><ul><li><input disabled="" type="checkbox"> 在副手火把优先级过高，大部分主手物品无法使用（背包，凿子，铲的草经化）</li></ul>]]></content>
     
     
     
