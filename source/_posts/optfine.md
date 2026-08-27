@@ -2,7 +2,7 @@
 layout: posts
 title: optfine
 date: 2023-12-30
-tags:
+tags: [版本列表]
 ---
 | Minecraft 版本 | Optfine 最新版本 |
 | -------------- | ---------------- |

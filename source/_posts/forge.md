@@ -2,7 +2,7 @@
 title: Forge 与 NeoForge 版本列表
 date: 2023-07-28 
 updated: 2024-02-14
-tags:
+tags: [版本列表]
 ---
 [<img src="https://neoforged.net/img/content/branding/banner.png" height="100px">](https://neoforged.net/)  
 [下载页面](https://projects.neoforged.net/neoforged/neoforge)

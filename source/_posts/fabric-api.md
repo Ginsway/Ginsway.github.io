@@ -2,7 +2,7 @@
 title: Fabric API 与 Quilted Fabric API / Quilt Standard Libraries 版本列表
 date: 2023-07-28
 updated: 2024-01-24
-tags:
+tags: [版本列表]
 ---
 [<img src="https://cdn.modrinth.com/data/P7dR8mSH/icon.png" width="100px" height="100px">](https://modrinth.com/mod/fabric-api)
 | Minecraft 版本 | Fabric API 最新版本 | 下载链接                                                                                                                                                                                                                                                                                                                                                                       |

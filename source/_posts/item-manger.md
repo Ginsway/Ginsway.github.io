@@ -1,7 +1,7 @@
 ---
 title: item_manger
 date: 2023-12-30
-tags:
+tags: [版本列表]
 ---
 Just Enough Items (JEI)
 | Minecraft 版本 | JEI 最新版本    | 下载链接                                                                                    |
