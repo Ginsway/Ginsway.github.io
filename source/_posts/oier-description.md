@@ -2,6 +2,7 @@
 title: oier-description
 date: 2025-11-30 13:56:59
 tags:
+hide: true
 ---
 [学校自查题单](/training/435577)  
 **[CSP-J 历年真题](/training/628074)**  
