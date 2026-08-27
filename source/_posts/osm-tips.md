@@ -20,6 +20,17 @@ tags:
 
 # 快速参考
 
+本参考仅代表个人用法，可能与社区共识有出入，欢迎各位斧正。
+
+## 要素生命周期
+
+- ```proposed:``` 画大饼
+- ```planned:``` 有详细规划，基本确定可以建成
+- ```construction:``` 建设中
+- ```disused:``` 暂时停止服务
+- ```abandoned:``` 弃用，需要大修才能投入使用
+- ```demolished:``` 拆毁，移除，用于保存历史痕迹
+
 ## 道路分级参考
 
 - 国道/一级公路/城市快速路```highway=trunk```| [trunk](https://wiki.openstreetmap.org/wiki/Tag:highway%3Dtrunk)
@@ -48,3 +59,8 @@ tags:
 
 - ```landuse=grass```| 人工草坪
 - ```landuse=greenfield```| 待开发地块，长了杂草但又裸露在外的
+
+## 城市土地覆盖参考
+- ```landuse=residential``` | 居民区
+- ```landuse=industrial``` | 工业区 
+- ```landuse=civic_admin``` | 政府机关
