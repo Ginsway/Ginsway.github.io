@@ -8,7 +8,7 @@
     <link href="/c8f84c978047/"/>
     <url>/c8f84c978047/</url>
     
-    <content type="html"><![CDATA[<p>基础：<br><code>yt-dlp --cookies-from-browser firefox &quot;https://www.youtube.com/watch?v=&quot;</code><br><code>yt-dlp --cookies-from-browser chromium &quot;https://www.bilibili.com/video/&quot;</code></p><p>视频下载：<br><code>-F</code>查看规格列表<br><code>--list-subs</code>查看字幕（包括弹幕）列表<br><code>--skip-download --write-subs --sub-format srt --convert-subs srt --sub-langs zh</code>只下载字幕<br><code>-t mkv</code> 封装</p>]]></content>
+    <content type="html"><![CDATA[<p>基础：<br><code>yt-dlp --cookies-from-browser chromium &quot;https://www.youtube.com/watch?v=&quot;</code><br><code>yt-dlp --cookies-from-browser firefox &quot;https://www.bilibili.com/video/&quot;</code></p><p>视频下载：<br><code>-F</code>查看规格列表<br><code>--list-subs</code>查看字幕（包括弹幕）列表<br><code>--skip-download --write-subs --sub-format srt --convert-subs srt --sub-langs zh</code>只下载字幕<br><code>-t mkv</code> 封装</p>]]></content>
     
     
     
