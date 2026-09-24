@@ -64,3 +64,9 @@ tags:
 - ```landuse=residential``` | 居民区
 - ```landuse=industrial``` | 工业区 
 - ```landuse=civic_admin``` | 政府机关
+
+
+有计划做一个OSM渲染器carto改，可以有更多渲染模式的。
+一些idea：
+- 仅展示交通线路，建成区，水路的（类似传统地图）
+- 添加人民政府，快递柜，等中国特色标签
