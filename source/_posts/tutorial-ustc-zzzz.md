@@ -1303,7 +1303,7 @@ public class ItemGoldenEgg extends Item
 
 现在我们就可以看到由于作者的艺术细胞极度缺乏而导致的金光闪闪熠熠生辉的创造模式物品栏了：
 
-![tab_fmltutor_analysis](./tutorial-ustc-zzzz/tab_fmltutor_analysis.png)
+![tab_fmltutor_analysis](tab_fmltutor_analysis.png)
 
 ## 1.6 第一份合成表、烧炼规则和燃料
 
