@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>Firefox自用字体配置推荐</title>
+    <link href="/de6c805a54ab/"/>
+    <url>/de6c805a54ab/</url>
+    
+    <content type="html"><![CDATA[<p>大体思路是，主要字体使用小米的MiSans，其次使用遍黑体（思源风格）和天珩字体（宋体风格）补齐生僻字</p><p>font.name-list.monospace.zh-CNMiSans VF, MiSans L3, 遍黑体P1, 遍黑体P2, NSimSun, SimSun, MS Song, SimSun-ExtB<br>font.name-list.monospace.zh-HKMisans TC VF, MiSans L3, 遍黑体P1, 遍黑体P2, MingLiU_HKSCS, Ming(for ISO10646), MingLiU, MingLiU_HKSCS-ExtB, Microsoft JhengHei<br>font.name-list.monospace.zh-TWMisans TC VF, MiSans L3, 遍黑体P1, 遍黑体P2,MingLiU, MingLiU-ExtB<br>font.name-list.sans-serif.thMiSans Thai VF, Tahoma<br>font.name-list.sans-serif.x-tibtMiSans MiSans Tibetan VF, Tibetan Machine Uni, Jomolhari, Microsoft Himalaya<br>font.name-list.sans-serif.zh-CNMiSans VF, MiSans L3, 遍黑体P1, 遍黑体P2, Noto Sans CJK SC, Noto Sans SC, Microsoft YaHei, SimHei<br>font.name-list.sans-serif.zh-HKMisans TC VF, MiSans L3, 遍黑体P1, 遍黑体P2, TH-Hak, Arial, MingLiU_HKSCS, Ming(for ISO10646), MingLiU, MingLiU_HKSCS-ExtB, Microsoft JhengHei, Noto Sans CJK HK, Noto Sans HK<br>font.name-list.sans-serif.zh-TWMisans TC VF, MiSans L3, 遍黑体P1, 遍黑体P2, TH-Hak, Arial, Microsoft JhengHei, PMingLiU, MingLiU, MingLiU-ExtB, Noto Sans CJK TC, Noto Sans TC<br>font.name-list.serif.zh-CNSimSun, MS Song, SimSun-ExtB, Noto Serif CJK SC, Noto Serif SC, TH-Sung-TP0, TH-Sung-TP2<br>font.name-list.serif.zh-HKTimes New Roman, MingLiu_HKSCS, Ming(for ISO10646), MingLiU, MingLiU_HKSCS-ExtB, Noto Serif CJK HK, Noto Serif HK, Microsoft JhengHei, TH-Sung-PP0, TH-Sung-PP2<br>font.name-list.serif.zh-TWTimes New Roman, PMingLiu, MingLiU, MingLiU-ExtB, Noto Serif CJK TC, Noto Serif TC, TH-Sung-PP0, TH-Sung-PP2</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>font-names</title>
+    <link href="/6054f7105ad7/"/>
+    <url>/6054f7105ad7/</url>
+    
+    <content type="html"><![CDATA[<h2 id="黑体"><a href="#黑体" class="headerlink" title="黑体"></a>黑体</h2><p>天珩黑体:TH-Hak台湾标准；字形风格：黑体。</p><h2 id="楷体"><a href="#楷体" class="headerlink" title="楷体"></a>楷体</h2><p>天珩正楷:TH-Khaai-T大陆标准；字形风格：楷体。<br>天珩标楷:TH-Khaai-P香港标准；字形风格：楷体。</p><h2 id="宋体"><a href="#宋体" class="headerlink" title="宋体"></a>宋体</h2><p>中易宋体:Simsun<br>华康细明体:MingLiU<br>华康新细明体:PMingLiU<br>天珩阳明:TH-Joeng日韩标准；字形风格：汉阳明朝体。<br>天珩花园:TH-Ming日韩标准；字形风格：花园明朝体。<br>天珩正宋:TH-Sung-T大陆标准；字形风格：宋体。<br>天珩标宋:TH-Sung-P港台标准；字形风格：宋体。<br>天珩书宋:TH-Sy    大陆标准；字形风格：书宋。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>關於嗶哩嗶哩短鏈</title>
     <link href="/d7ed7b77af9b/"/>
     <url>/d7ed7b77af9b/</url>
